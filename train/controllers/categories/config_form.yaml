@@ -1,0 +1,14 @@
+name: 培训类别
+modelClass: Samubra\Train\Models\Category
+form: $/samubra/train/models/category/fields.yaml
+defaultRedirect: samubra/train/categories
+create:
+    redirect: 'samubra/train/categories/update/:id'
+    redirectClose: samubra/train/categories
+    flashSave: 培训类别添加成功
+update:
+    redirect: samubra/train/categories
+    redirectClose: samubra/train/categories
+    flashSave: 培训类别修改成功
+    flashDelete: 培训类别删除成功
+preview: {  }

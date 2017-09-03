@@ -1,0 +1,28 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table samubra_train_lookup'
+    - builder_table_create_samubra_train_lookup.php
+    - seed_lookup_table.php
+1.0.3:
+    - 'Created table samubra_train_category'
+    - builder_table_create_samubra_train_category.php
+    - seed_category_table.php
+1.0.4:
+    - 'Created table samubra_train_plan'
+    - builder_table_create_samubra_train_plan.php
+1.0.5:
+    - 'Created table samubra_train_course'
+    - builder_table_create_samubra_train_course.php
+1.0.6:
+    - 'Created table samubra_train_teacher'
+    - builder_table_create_samubra_train_teacher.php
+1.0.7:
+    - 'Created table samubra_train_plan_course_relation'
+    - builder_table_create_samubra_train_plan_course_relation.php
+1.0.8:
+    - 'Created table samubra_train_record'
+    - builder_table_create_samubra_train_record.php
+1.0.9:
+    - 'Created table samubra_train_apply'
+    - builder_table_create_samubra_train_apply.php

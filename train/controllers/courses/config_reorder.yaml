@@ -1,0 +1,5 @@
+title: 课程
+modelClass: Samubra\Train\Models\Course
+nameFrom: 替他乐
+toolbar:
+    buttons: reorder_toolbar

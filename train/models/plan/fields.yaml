@@ -1,0 +1,140 @@
+fields:
+    title:
+        label: 'samubra.train::lang.plan.title'
+        span: full
+        disabled: 1
+        type: text
+        comment: 该名称为系统自动生成，无需填写
+tabs:
+    fields:
+        train_type:
+            label: 'samubra.train::lang.plan.type_id'
+            oc.commentPosition: ''
+            nameFrom: name
+            descriptionFrom: description
+            span: auto
+            required: 1
+            type: relation
+            tab: 培训信息
+        is_review:
+            label: 'samubra.train::lang.apply.is_review'
+            oc.commentPosition: ''
+            span: auto
+            required: 1
+            type: dropdown
+            tab: 培训信息
+        plan_status:
+            label: 'samubra.train::lang.plan.status_id'
+            oc.commentPosition: ''
+            nameFrom: name
+            descriptionFrom: description
+            span: auto
+            required: 1
+            type: relation
+            tab: 培训信息
+        can_apply:
+            label: 'samubra.train::lang.plan.can_apply'
+            span: auto
+            default: 1
+            type: switch
+            tab: 培训信息
+        end_apply_date:
+            label: 'samubra.train::lang.plan.end_apply_date'
+            oc.commentPosition: ''
+            mode: date
+            yearRange: '1'
+            span: auto
+            required: 1
+            type: datepicker
+            tab: 培训信息
+        start_date:
+            label: 'samubra.train::lang.plan.start_date'
+            oc.commentPosition: ''
+            mode: date
+            yearRange: '1'
+            span: auto
+            required: 1
+            type: datepicker
+            tab: 培训信息
+        exam_date:
+            label: 'samubra.train::lang.plan.exam_date'
+            oc.commentPosition: ''
+            mode: date
+            yearRange: '1'
+            span: auto
+            required: 1
+            type: datepicker
+            tab: 培训信息
+        end_date:
+            label: 'samubra.train::lang.plan.end_date'
+            oc.commentPosition: ''
+            mode: date
+            yearRange: '1'
+            span: auto
+            required: 1
+            type: datepicker
+            tab: 培训信息
+        contact:
+            label: 'samubra.train::lang.plan.contact'
+            oc.commentPosition: ''
+            span: auto
+            required: 1
+            type: text
+            tab: 培训信息
+        phone:
+            label: 'samubra.train::lang.plan.phone'
+            oc.commentPosition: ''
+            span: auto
+            required: 1
+            type: text
+            tab: 培训信息
+        description:
+            label: 'samubra.train::lang.plan.description'
+            size: large
+            oc.commentPosition: ''
+            span: auto
+            stretch: 0
+            type: richeditor
+            tab: 培训信息
+        other_info:
+            label: 'samubra.train::lang.plan.other_info'
+            oc.commentPosition: ''
+            prompt: 添加说明
+            span: auto
+            type: repeater
+            tab: 培训信息
+            form:
+                fields:
+                    title:
+                        label: 说明
+                        oc.commentPosition: ''
+                        span: full
+                        required: 1
+                        type: text
+        photos:
+            label: 宣传图片
+            oc.commentPosition: ''
+            mode: image
+            useCaption: true
+            thumbOptions:
+                mode: crop
+                extension: auto
+            span: full
+            type: fileupload
+            tab: 培训信息
+        courses:
+            span: full
+            path: course_field
+            context:
+                - update
+                - preview
+            type: partial
+            tab: 培训课程
+        records:
+            span: full
+            path: records_field
+            context:
+                - update
+                - preview
+            type: partial
+            tab: 培训学员

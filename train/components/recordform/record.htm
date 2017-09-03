@@ -1,0 +1,28 @@
+{% if record %}
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title">操作证信息</h3>
+    </div>
+    <div class="panel-body">
+        <table  class="table table-bordered well">
+            <colgroup>
+                <col class="col-xs-3">
+                <col class="col-xs-5">
+            </colgroup>
+            <thead>
+            <tr><th>项目</th><td>内容</td></tr>
+            </thead>
+            <tbody>
+            <tr><th>姓名</th><td>{{ record.name }} </td></tr>
+            <tr><th>身份证号码</th><td>{{ record.identity }}</td></tr>
+            <tr><th>初领证日期</th><td>{{ record.first_get_date }}</td></tr>
+            <tr><th>发证日期</th><td>{{ record.print_date }}</td></tr>
+            <tr><th>是否已复审</th><td><span class="label label-primary">{{ record.is_reviewed?'已复审':'未复审' }}</span></td></tr>
+            <tr><th>允许报名状态</th><td><span class="label label-primary">{{ record.checkCanApply(plan.is_review)?'允许报名':'禁止报名' }}</span></td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% else %}
+错误或报名已完成
+{% endif %}

@@ -1,0 +1,76 @@
+{% if record %}
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h3 class="panel-title">填写培训申请信息</h3>
+    </div>
+    <div class="panel-body">
+        <form id="applyForm"
+              data-request="{{ __SELF__ }}::onSaveApply"
+              data-request-redirect="/plan/list"
+              data-request-flash
+              class="form-horizontal col s12">
+            <input name="plan_id" type="hidden" value="{{ plan.id }}">
+            <input name="record_id" type="hidden" value="{{ record.id }}">
+            <input name="is_review" type="hidden" value="{{ plan.is_review }}">
+            <fieldset>
+                <div class="form-group">
+                    <label for="identity" class="col-lg-2 control-label">身份证号码</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="identity" name="identity" placeholder="输入身份证号码" value="{{ record.identity }}">
+                        <span data-validate-for="identity"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="name" class="col-lg-2 control-label">姓名</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="输入姓名" value="{{ record.name }}">
+                        <span data-validate-for="name"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="edu_id" class="col-lg-2 control-label">文化程度</label>
+                    <div class="col-lg-10">
+                        <select class="form-control" id="edu_id" name="edu_id">
+                            {% for id,edu in eduOptions %}
+                            <option value="{{ id }}">{{ edu }}</option>
+                            {% endfor %}
+                        </select>
+                        <span data-validate-for="edu_id"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="phone" class="col-lg-2 control-label">联系电话</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="phone" name="phone" placeholder="输入手机号码" >
+                        <span data-validate-for="phone"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="address" class="col-lg-2 control-label">联系地址</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="address" name="address" placeholder="输入联系地址" >
+                        <span data-validate-for="address"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="company" class="col-lg-2 control-label">单位名称</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="company" name="company" placeholder="输入单位名称，无单位则填个体" >
+                        <span data-validate-for="company"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                        <button type="submit" name="action" class="btn btn-primary">完成报名</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+{% else %}
+<div class="panel panel-default">
+    <div class="panel-body">错误或报名已完成</div>
+</div>
+{% endif %}

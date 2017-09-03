@@ -1,0 +1,12 @@
+title: 培训计划
+modelClass: Samubra\Train\Models\Plan
+list: $/samubra/train/models/plan/columns.yaml
+recordUrl: 'samubra/train/plans/update/:id'
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+showSorting: 1
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'

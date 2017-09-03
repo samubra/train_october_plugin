@@ -1,0 +1,9 @@
+# ===================================
+#  Relation Behavior Config
+# ===================================
+
+plans:
+    label: 培训记录
+    view:
+        list: $/samubra/train/models/plan/pivotColumns.yaml
+    readOnly: true

@@ -1,0 +1,29 @@
+columns:
+    id:
+        label: Id
+        type: number
+        sortable: true
+    title:
+        label: 'samubra.train::lang.course.title'
+        type: text
+        searchable: true
+    course_type_text:
+        label: 'samubra.train::lang.course.course_type'
+        type: text
+        sortable: true
+    'pivot[teacher_name]':
+        label: 'samubra.train::lang.plan_course_relation.teacher_id'
+        type: text
+        sortable: true
+    'pivot[hours]':
+        label: 'samubra.train::lang.plan_course_relation.hours'
+        type: text
+        sortable: true
+    'pivot[start_time]':
+        label: 'samubra.train::lang.plan_course_relation.start_time'
+        type: datetime
+        sortable: true
+    'pivot[end_time]':
+        label: 'samubra.train::lang.plan_course_relation.end_time'
+        type: datetime
+        sortable: true

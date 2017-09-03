@@ -1,0 +1,49 @@
+{% if new_record %}
+{% partial __SELF__~"::apply_form" record=__SELF__.record plan=__SELF__.plan %}
+{% else %}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">选择对应的操作证进行下一步操作</h3>
+    </div>
+    <div class="panel-body">
+        <div class="input-group col-sm-12">
+            <table class="table table-striped table-hover">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>姓名</th>
+                    <th>作业类别</th>
+                    <th>发证日期</th>
+                    <th>是否已复审</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for key,record in records %}
+                <tr>
+                    <td>{{ key+1 }}</td>
+                    <td>{{ record.name }}</td>
+                    <td>{{ record.record_type.name }}</td>
+                    <td>{{ record.print_date }}</td>
+                    <td>{{ record.is_valid ? '已复审':'未复审' }}</td>
+                    <td>
+                        {% if record.checkCanApply(plan.is_review)%}
+
+                        <a data-request="{{ __SELF__ }}::onLoadRecord"
+                           data-request-data="record_id:{{ record.id }}"
+                           data-request-confirm="你确定选择这个操作证吗？"
+                           data-request-update="'{{ __SELF__ }}::apply_form': '#result','{{ __SELF__ }}::record': '#record'"
+                           href="#" >选择</a></td>
+                        {% else %}
+                            <i>不可操作</i>
+                    {% endif %}
+                    </td>
+
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endif %}

@@ -1,0 +1,11 @@
+name: 教师
+modelClass: Samubra\Train\Models\Teacher
+form: $/samubra/train/models/teacher/fields.yaml
+defaultRedirect: samubra/train/teachers
+create:
+    redirect: 'samubra/train/teachers/update/:id'
+    redirectClose: samubra/train/teachers
+update:
+    redirect: samubra/train/teachers
+    redirectClose: samubra/train/teachers
+preview: {  }

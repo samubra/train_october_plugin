@@ -1,0 +1,42 @@
+columns:
+    id:
+        label: Id
+        type: number
+        sortable: true
+    name:
+        label: 'samubra.train::lang.apply.name'
+        type: text
+        searchable: true
+        sortable: true
+    identity:
+        label: 'samubra.train::lang.apply.identity'
+        type: text
+        searchable: true
+        sortable: true
+    record_type:
+        label: 'samubra.train::lang.plan.type_id'
+        type: text
+        sortable: true
+        select: name
+        relation: record_type
+    'pivot[phone]':
+        label: 'samubra.train::lang.apply.phone'
+        type: text
+        default: 未填写
+        sortable: true
+    'pivot[address]':
+        label: 'samubra.train::lang.apply.address'
+        type: text
+        default: 未填写
+    'pivot[company]':
+        label: 'samubra.train::lang.apply.company'
+        type: text
+        default: 未填写
+    'pivot[apply_status_name]':
+        label: 'samubra.train::lang.apply.status_id'
+        type: text
+        default: 未填写
+    'pivot[pay]':
+        label: 'samubra.train::lang.apply.pay'
+        type: number
+        default: 未缴费

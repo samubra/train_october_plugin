@@ -1,0 +1,18 @@
+fields:
+    name:
+        label: 'samubra.train::lang.lookup.name'
+        span: auto
+        required: 1
+        type: text
+    code:
+        label: 'samubra.train::lang.lookup.code'
+        oc.commentPosition: ''
+        span: auto
+        required: 1
+        type: text
+    type:
+        label: 'samubra.train::lang.lookup.type'
+        span: full
+        oc.commentPosition: ''
+        required: 1
+        type: dropdown

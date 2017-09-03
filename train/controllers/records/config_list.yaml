@@ -1,0 +1,11 @@
+title: 操作证列表
+modelClass: Samubra\Train\Models\Record
+list: $/samubra/train/models/record/columns.yaml
+recordUrl: 'samubra/train/records/update/:id'
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'

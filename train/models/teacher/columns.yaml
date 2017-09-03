@@ -1,0 +1,58 @@
+columns:
+    id:
+        label: ID
+        type: number
+        sortable: true
+    name:
+        label: 'samubra.train::lang.teacher.name'
+        type: text
+        searchable: true
+        sortable: true
+    identity:
+        label: 'samubra.train::lang.teacher.identity'
+        type: text
+        searchable: true
+    certificate_no:
+        label: 'samubra.train::lang.teacher.certificate_no'
+        type: text
+        searchable: true
+    job_title:
+        label: 'samubra.train::lang.teacher.job_title'
+        type: text
+        searchable: true
+        invisible: true
+        sortable: true
+    phone:
+        label: 'samubra.train::lang.teacher.phone'
+        type: text
+        searchable: true
+    company:
+        label: 'samubra.train::lang.teacher.company'
+        type: text
+        invisible: true
+        sortable: true
+    edu_type:
+        label: 'samubra.train::lang.teacher.edu_id'
+        type: text
+        searchable: false
+        invisible: true
+        sortable: true
+        select: name
+        relation: edu_type
+    teacher_type:
+        label: 'samubra.train::lang.teacher.type_id'
+        type: number
+        searchable: true
+        sortable: true
+        select: name
+        relation: teacher_type
+    created_at:
+        label: 'samubra.train::lang.plugin.created_at'
+        type: datetime
+        invisible: true
+        sortable: true
+    updated_at:
+        label: 'samubra.train::lang.plugin.updated_at'
+        type: datetime
+        searchable: true
+        sortable: true

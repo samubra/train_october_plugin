@@ -1,0 +1,4 @@
+title: Lookups
+modelClass: Samubra\Train\Models\Lookup
+toolbar:
+    buttons: reorder_toolbar

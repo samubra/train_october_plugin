@@ -1,0 +1,17 @@
+name: 元数据
+modelClass: Samubra\Train\Models\Lookup
+form: $/samubra/train/models/lookup/fields.yaml
+defaultRedirect: samubra/train/lookups
+create:
+    title: 添加数据
+    redirect: 'samubra/train/lookups/update/:id'
+    redirectClose: samubra/train/lookups
+    flashSave: 新添加的数据已保存
+update:
+    title: 修改数据
+    redirect: samubra/train/lookups
+    redirectClose: samubra/train/lookups
+    flashSave: 元数据已修改成功
+    flashDelete: 元数据已成功删除
+preview:
+    title: 元数据信息

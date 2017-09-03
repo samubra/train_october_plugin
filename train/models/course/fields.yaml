@@ -1,0 +1,30 @@
+fields:
+    title:
+        label: 'samubra.train::lang.course.title'
+        oc.commentPosition: ''
+        span: auto
+        required: 1
+        type: text
+    course_type:
+        label: 'samubra.train::lang.course.course_type'
+        oc.commentPosition: ''
+        span: auto
+        required: 1
+        type: dropdown
+    default_hours:
+        label: 'samubra.train::lang.course.default_hours'
+        oc.commentPosition: ''
+        span: auto
+        default: '4.0'
+        required: 1
+        type: number
+    default_teacher:
+        label: 'samubra.train::lang.course.default_teacher_id'
+        oc.commentPosition: ''
+        nameFrom: name
+        descriptionFrom: type_name
+        prompt: 点击%s选择授课教师
+        list: $/samubra/train/models/teacher/columns.yaml
+        span: auto
+        required: 1
+        type: recordfinder

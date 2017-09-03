@@ -1,0 +1,14 @@
+name: 操作证
+modelClass: Samubra\Train\Models\Record
+form: $/samubra/train/models/record/fields.yaml
+defaultRedirect: samubra/train/records
+create:
+    title: 添加新的操作证
+    redirect: 'samubra/train/records/update/:id'
+    redirectClose: samubra/train/records
+update:
+    title: 修改操作证
+    redirect: samubra/train/records
+    redirectClose: samubra/train/records
+preview:
+    title: 显示操作证信息

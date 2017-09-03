@@ -1,0 +1,5 @@
+title: 操作证
+modelClass: Samubra\Train\Models\Record
+nameFrom: name
+toolbar:
+    buttons: reorder_toolbar

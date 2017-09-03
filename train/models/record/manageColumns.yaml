@@ -1,0 +1,71 @@
+columns:
+    id:
+        label: Id
+        type: number
+        sortable: true
+    name:
+        label: 'samubra.train::lang.apply.name'
+        type: text
+        searchable: true
+        sortable: true
+    identity:
+        label: 'samubra.train::lang.apply.identity'
+        type: text
+        searchable: true
+        sortable: true
+    user_id:
+        label: 'samubra.train::lang.apply.user_id'
+        type: number
+        invisible: true
+        sortable: true
+    record_type:
+        label: 'samubra.train::lang.plan.type_id'
+        type: text
+        sortable: true
+        select: name
+        relation: record_type
+    first_get_date:
+        label: 'samubra.train::lang.record.first_get_date'
+        type: date
+        searchable: true
+        invisible: true
+        sortable: true
+    print_date:
+        label: 'samubra.train::lang.record.print_date'
+        type: date
+        searchable: true
+        sortable: true
+    review_date:
+        label: 'samubra.train::lang.record.review_date'
+        type: date
+        searchable: true
+        sortable: true
+    reprint_date:
+        label: 'samubra.train::lang.record.reprint_date'
+        type: date
+        searchable: true
+        invisible: true
+        sortable: true
+    is_reviewed:
+        label: 'samubra.train::lang.record.is_reviewed'
+        type: switch
+        sortable: true
+    remark:
+        label: 'samubra.train::lang.plugin.remark'
+        type: text
+        searchable: true
+        invisible: true
+    created_at:
+        label: 'samubra.train::lang.plugin.created_at'
+        type: datetime
+        invisible: true
+        sortable: true
+    updated_at:
+        label: 'samubra.train::lang.plugin.updated_at'
+        type: datetime
+        sortable: true
+    deleted_at:
+        label: 'samubra.train::lang.plugin.deleted_at'
+        type: datetime
+        invisible: true
+        sortable: true

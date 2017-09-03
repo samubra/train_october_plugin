@@ -1,0 +1,36 @@
+columns:
+    id:
+        label: ID
+        type: number
+    title:
+        label: 'samubra.train::lang.plan.title'
+        type: text
+        searchable: true
+        sortable: false
+    type_id:
+        label: 'samubra.train::lang.plan.type_id'
+        type: text
+        searchable: false
+        sortable: true
+        select: name
+        relation: train_type
+    is_review_text:
+        label: 'samubra.train::lang.apply.is_review'
+        type: text
+        searchable: false
+        sortable: false
+    status_id:
+        label: 'samubra.train::lang.plan.status_id'
+        type: text
+        searchable: false
+        sortable: true
+        select: name
+        relation: plan_status
+    can_apply:
+        label: 'samubra.train::lang.plan.can_apply'
+        type: switch
+        sortable: true
+    updated_at:
+        label: 'samubra.train::lang.plugin.updated_at'
+        type: datetime
+        sortable: true

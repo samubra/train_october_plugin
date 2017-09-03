@@ -1,0 +1,14 @@
+title: 培训类别列表
+modelClass: Samubra\Train\Models\Category
+list: $/samubra/train/models/category/columns.yaml
+recordUrl: 'samubra/train/categories/update/:id'
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+showSorting: 1
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+showTree: 1
+treeExpanded: 1

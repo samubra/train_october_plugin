@@ -1,0 +1,26 @@
+columns:
+    name:
+        label: 'samubra.train::lang.apply.name'
+        type: text
+    identity:
+        label: 'samubra.train::lang.apply.identity'
+        type: text
+    first_get_date:
+        label: 'samubra.train::lang.record.first_get_date'
+        type: date
+    print_date:
+        label: 'samubra.train::lang.record.print_date'
+        type: date
+    review_date:
+        label: 'samubra.train::lang.record.review_date'
+        type: date
+    reprint_date:
+        label: 'samubra.train::lang.record.reprint_date'
+        type: date
+    is_reviewed:
+        label: 'samubra.train::lang.record.is_reviewed'
+        type: switch
+        sortable: true
+    remark:
+        label: 'samubra.train::lang.plugin.remark'
+        type: text

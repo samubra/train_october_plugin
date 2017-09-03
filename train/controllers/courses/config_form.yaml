@@ -1,0 +1,14 @@
+name: 课程
+modelClass: Samubra\Train\Models\Course
+form: $/samubra/train/models/course/fields.yaml
+defaultRedirect: samubra/train/courses
+create:
+    title: 添加课程
+    redirect: 'samubra/train/courses/update/:id'
+    redirectClose: samubra/train/courses
+update:
+    title: 修改课程
+    redirect: samubra/train/courses
+    redirectClose: samubra/train/courses
+preview:
+    title: 预览课程

@@ -1,0 +1,49 @@
+columns:
+    id:
+        label: ID
+        type: number
+    type_id:
+        label: 'samubra.train::lang.plan.type_id'
+        type: text
+        searchable: false
+        sortable: true
+        select: name
+        relation: train_type
+    is_review_text:
+        label: 'samubra.train::lang.apply.is_review'
+        type: text
+        searchable: false
+        sortable: false
+    start_date:
+        label: 'samubra.train::lang.plan.start_date'
+        type: date
+        sortable: true
+    end_date:
+        label: 'samubra.train::lang.plan.end_date'
+        type: date
+        sortable: true
+    status_id:
+        label: 'samubra.train::lang.plan.status_id'
+        type: text
+        searchable: false
+        sortable: true
+        select: name
+        relation: plan_status
+    pivot[phone]:
+        label: 'samubra.train::lang.apply.phone'
+        type: text
+        sortable: true
+        default: 未填写
+    pivot[address]:
+        label: 'samubra.train::lang.apply.address'
+        type: text
+        default: 未填写
+    pivot[company]:
+        label: 'samubra.train::lang.apply.company'
+        type: text
+        default: 未填写
+    pivot[apply_status_name]:
+        label: 'samubra.train::lang.apply.status_id'
+        type: text
+        default: 未填写
+

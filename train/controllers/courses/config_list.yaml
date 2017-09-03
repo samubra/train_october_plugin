@@ -1,0 +1,11 @@
+title: 课程列表
+modelClass: Samubra\Train\Models\Course
+list: $/samubra/train/models/course/columns.yaml
+recordUrl: 'samubra/train/courses/update/:id'
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'

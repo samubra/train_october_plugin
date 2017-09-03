@@ -1,0 +1,32 @@
+columns:
+    id:
+        label: Id
+        type: number
+        sortable: true
+    title:
+        label: 'samubra.train::lang.course.title'
+        type: text
+        searchable: true
+    course_type_text:
+        label: 'samubra.train::lang.course.course_type'
+        type: text
+        sortable: true
+    default_teacher:
+        label: 'samubra.train::lang.course.default_teacher_id'
+        type: text
+        sortable: true
+        select: name
+        relation: default_teacher
+    default_hours:
+        label: 'samubra.train::lang.course.default_hours'
+        type: text
+        sortable: true
+    created_at:
+        label: 'samubra.train::lang.plugin.created_at'
+        type: datetime
+        invisible: true
+        sortable: true
+    updated_at:
+        label: 'samubra.train::lang.plugin.updated_at'
+        type: datetime
+        sortable: true

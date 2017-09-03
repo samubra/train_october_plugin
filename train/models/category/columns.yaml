@@ -1,0 +1,30 @@
+columns:
+    id:
+        label: ID
+        type: number
+        sortable: true
+    name:
+        label: 'samubra.train::lang.category.name'
+        type: text
+        searchable: true
+    parent:
+        label: 'samubra.train::lang.category.parent_id'
+        type: text
+        searchable: true
+        sortable: false
+        select: name
+        relation: parent
+    depth:
+        label: 'samubra.train::lang.category.depth'
+        type: number
+        searchable: true
+        sortable: true
+    created_at:
+        label: 'samubra.train::lang.plugin.created_at'
+        type: datetime
+        searchable: false
+        sortable: true
+    updated_at:
+        label: 'samubra.train::lang.plugin.updated_at'
+        type: datetime
+        sortable: true

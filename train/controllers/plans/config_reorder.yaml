@@ -1,0 +1,5 @@
+title: 培训计划
+modelClass: Samubra\Train\Models\Plan
+nameFrom: title
+toolbar:
+    buttons: reorder_toolbar

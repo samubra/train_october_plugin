@@ -1,0 +1,11 @@
+title: 教师列表
+modelClass: Samubra\Train\Models\Teacher
+list: $/samubra/train/models/teacher/columns.yaml
+recordUrl: 'samubra/train/teachers/update/:id'
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'

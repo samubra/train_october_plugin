@@ -1,0 +1,5 @@
+fields:
+    record_type:
+        label: 'samubra.train::lang.plan.type_id'
+        oc.commentPosition: ''
+        type: dropdown

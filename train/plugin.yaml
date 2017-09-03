@@ -1,0 +1,69 @@
+plugin:
+    name: 'samubra.train::lang.plugin.name'
+    description: 'samubra.train::lang.plugin.description'
+    author: samubra
+    icon: oc-icon-adjust
+    homepage: 'http://tiikoo.cn'
+permissions:
+    lookup.manage:
+        tab: 'samubra.train::lang.lookup.manage'
+        label: 'samubra.train::lang.lookup.manage'
+    category.manage:
+        tab: 'samubra.train::lang.category.manage'
+        label: 'samubra.train::lang.category.manage'
+    plan.manage:
+        tab: 'samubra.train::lang.plan.manage'
+        label: 'samubra.train::lang.plan.manage'
+    teacher.manage:
+        tab: 'samubra.train::lang.teacher.manage'
+        label: 'samubra.train::lang.teacher.manage'
+    course.manage:
+        tab: 'samubra.train::lang.course.manage'
+        label: 'samubra.train::lang.course.manage'
+    record.manage:
+        tab: 'samubra.train::lang.record.manage'
+        label: 'samubra.train::lang.record.manage'
+navigation:
+    main-menu-item:
+        label: 培训管理
+        url: samubra/train/plans
+        icon: icon-building
+        permissions:
+            - lookup.manage
+        sideMenu:
+            side-menu-item3:
+                label: 'samubra.train::lang.plan.manage'
+                url: samubra/train/plans
+                icon: icon-space-shuttle
+                permissions:
+                    - plan.manage
+            side-menu-item6:
+                label: 'samubra.train::lang.record.manage'
+                url: samubra/train/records
+                icon: icon-credit-card
+                permissions:
+                    - record.manage
+            side-menu-item5:
+                label: 'samubra.train::lang.course.manage'
+                url: samubra/train/courses
+                icon: icon-stack-overflow
+                permissions:
+                    - course.manage
+            side-menu-item4:
+                label: 'samubra.train::lang.teacher.manage'
+                url: samubra/train/teachers
+                icon: icon-user-secret
+                permissions:
+                    - teacher.manage
+            side-menu-item2:
+                label: 'samubra.train::lang.category.manage'
+                url: samubra/train/categories
+                icon: icon-sitemap
+                permissions:
+                    - category.manage
+            side-menu-item:
+                label: 'samubra.train::lang.lookup.manage'
+                url: samubra/train/lookups
+                icon: icon-simplybuilt
+                permissions:
+                    - lookup.manage

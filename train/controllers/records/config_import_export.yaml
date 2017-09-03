@@ -1,0 +1,9 @@
+import:
+    title: 导入操作证
+    modelClass: Samubra\Train\Models\RecordsImport
+    list: $/samubra/train/models/record/columns_import.yaml
+    form: $/samubra/train/models/record/fields_import.yaml
+export:
+    title: 导出操作证
+    modelClass: Samubra\Train\Models\RecordsExport
+    list: $/samubra/train/models/record/columns.yaml

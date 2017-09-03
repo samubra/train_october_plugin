@@ -1,0 +1,7 @@
+fields:
+    title:
+        label: 'samubra.train::lang.course.title'
+        oc.commentPosition: ''
+        span: auto
+        required: 1
+        type: text

@@ -1,0 +1,98 @@
+fields:
+    name:
+        label: 'samubra.train::lang.apply.name'
+        oc.commentPosition: ''
+        span: left
+        required: 1
+        type: text
+    identity:
+        label: 'samubra.train::lang.apply.identity'
+        oc.commentPosition: ''
+        span: auto
+        required: 1
+        type: text
+tabs:
+    fields:
+        record_type:
+            label: 'samubra.train::lang.plan.type_id'
+            oc.commentPosition: ''
+            nameFrom: name
+            descriptionFrom: type
+            span: auto
+            required: 1
+            type: relation
+            tab: 证件信息
+        first_get_date:
+            label: 'samubra.train::lang.record.first_get_date'
+            oc.commentPosition: ''
+            mode: date
+            yearRange: '10'
+            span: auto
+            type: datepicker
+            tab: 证件信息
+        print_date:
+            label: 'samubra.train::lang.record.print_date'
+            oc.commentPosition: ''
+            mode: date
+            yearRange: '6'
+            span: auto
+            type: datepicker
+            tab: 证件信息
+        review_date:
+            label: 'samubra.train::lang.record.review_date'
+            oc.commentPosition: ''
+            mode: date
+            yearRange: '3'
+            span: auto
+            type: datepicker
+            tab: 证件信息
+        reprint_date:
+            label: 'samubra.train::lang.record.reprint_date'
+            oc.commentPosition: ''
+            mode: date
+            yearRange: '6'
+            span: auto
+            type: datepicker
+            tab: 证件信息
+        is_reviewed:
+            label: 'samubra.train::lang.record.is_reviewed'
+            span: auto
+            default: 0
+            type: switch
+            tab: 证件信息
+        remark:
+            label: 备注列表
+            oc.commentPosition: ''
+            prompt: 添加备注信息
+            span: auto
+            type: repeater
+            tab: 证件信息
+            form:
+                fields:
+                    remark:
+                        label: 备注列表
+                        oc.commentPosition: ''
+                        span: auto
+                        type: text
+        photo:
+            label: 照片
+            oc.commentPosition: ''
+            mode: image
+            prompt: 上传照片
+            imageWidth: '90'
+            imageHeight: '100'
+            useCaption: true
+            thumbOptions:
+                mode: crop
+                extension: auto
+            span: auto
+            type: fileupload
+            tab: 证件信息
+        plans:
+            span: full
+            path: plans_field
+            context:
+                - update
+                - preview
+            type: partial
+            tab: 培训信息

@@ -1,0 +1,141 @@
+fields:
+    name:
+        label: 'samubra.train::lang.apply.name'
+        oc.commentPosition: ''
+        span: auto
+        disabled: 1
+        type: text
+    identity:
+        label: 'samubra.train::lang.apply.identity'
+        oc.commentPosition: ''
+        span: auto
+        disabled: 1
+        type: text
+    record_type:
+        label: 'samubra.train::lang.plan.type_id'
+        oc.commentPosition: ''
+        nameFrom: name
+        descriptionFrom: type
+        span: auto
+        hidden: 0
+        disabled: 1
+        type: relation
+    is_reviewed:
+        label: 'samubra.train::lang.record.is_reviewed'
+        span: auto
+        default: 0
+        disabled: 1
+        type: switch
+tabs:
+    fields:
+        'pivot[name]':
+            label: 'samubra.train::lang.apply.name'
+            oc.commentPosition: ''
+            span: auto
+            disabled: 0
+            hidden: 0
+            required: 1
+            context:
+                - create
+                - preview
+            defaultFrom: name
+            trigger:
+                action: disable
+                field: name
+            type: text
+            tab: 申请信息
+        photo:
+            label: 照片
+            oc.commentPosition: ''
+            mode: image
+            imageWidth: '90'
+            imageHeight: '100'
+            useCaption: true
+            thumbOptions:
+                mode: crop
+                extension: auto
+            span: auto
+            required: 0
+            type: fileupload
+            tab: 申请信息
+        'pivot[identity]':
+            label: 'samubra.train::lang.apply.identity'
+            oc.commentPosition: ''
+            span: auto
+            disabled: 0
+            hidden: 0
+            required: 1
+            context:
+                - create
+                - preview
+            defaultFrom: identity
+            type: text
+            tab: 申请信息
+        'pivot[phone]':
+            label: 'samubra.train::lang.apply.phone'
+            oc.commentPosition: ''
+            span: auto
+            type: text
+            tab: 申请信息
+        'pivot[address]':
+            label: 'samubra.train::lang.apply.address'
+            oc.commentPosition: ''
+            span: auto
+            type: text
+            tab: 申请信息
+        'pivot[company]':
+            label: 'samubra.train::lang.apply.company'
+            oc.commentPosition: ''
+            span: auto
+            default: 个体
+            type: text
+            tab: 申请信息
+        'pivot[edu]':
+            label: 'samubra.train::lang.apply.edu_id'
+            oc.commentPosition: ''
+            nameFrom: name
+            descriptionFrom: description
+            span: auto
+            required: 1
+            type: relation
+            tab: 申请信息
+        'pivot[health]':
+            label: 'samubra.train::lang.apply.health_id'
+            oc.commentPosition: ''
+            nameFrom: name
+            descriptionFrom: description
+            span: auto
+            required: 1
+            type: relation
+            tab: 申请信息
+        'pivot[apply_status]':
+            label: 'samubra.train::lang.apply.status_id'
+            oc.commentPosition: ''
+            nameFrom: name
+            descriptionFrom: description
+            span: auto
+            required: 1
+            type: relation
+            tab: 申请信息
+        'pivot[pay]':
+            label: 'samubra.train::lang.apply.pay'
+            oc.commentPosition: ''
+            span: auto
+            required: 1
+            default: 0
+            type: number
+            tab: 申请信息
+        'pivot[remark]':
+            label: 'samubra.train::lang.plugin.remark'
+            oc.commentPosition: ''
+            prompt: 添加备注
+            span: full
+            type: repeater
+            tab: 申请信息
+            form:
+                fields:
+                    title:
+                        label: 备注
+                        oc.commentPosition: ''
+                        span: full
+                        type: text

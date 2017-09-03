@@ -1,0 +1,53 @@
+fields:
+    name:
+        label: 'samubra.train::lang.teacher.name'
+        oc.commentPosition: ''
+        span: auto
+        required: 1
+        type: text
+    identity:
+        label: 'samubra.train::lang.teacher.identity'
+        oc.commentPosition: ''
+        span: auto
+        required: 1
+        type: text
+    certificate_no:
+        label: 'samubra.train::lang.teacher.certificate_no'
+        oc.commentPosition: ''
+        span: auto
+        required: 1
+        type: text
+    job_title:
+        label: 'samubra.train::lang.teacher.job_title'
+        oc.commentPosition: ''
+        span: auto
+        required: 1
+        type: text
+    phone:
+        label: 'samubra.train::lang.teacher.phone'
+        oc.commentPosition: ''
+        span: auto
+        required: 1
+        type: text
+    company:
+        label: 'samubra.train::lang.teacher.company'
+        oc.commentPosition: ''
+        span: auto
+        required: 1
+        type: text
+    teacher_type:
+        label: 'samubra.train::lang.teacher.type_id'
+        oc.commentPosition: ''
+        nameFrom: name
+        descriptionFrom: description
+        span: auto
+        required: 1
+        type: relation
+    edu_type:
+        label: 'samubra.train::lang.teacher.edu_id'
+        oc.commentPosition: ''
+        nameFrom: name
+        descriptionFrom: description
+        span: auto
+        required: 1
+        type: relation
