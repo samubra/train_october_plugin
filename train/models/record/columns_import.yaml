@@ -17,10 +17,26 @@ columns:
     reprint_date:
         label: 'samubra.train::lang.record.reprint_date'
         type: date
+    phone:
+        label: 'samubra.train::lang.apply.phone'
+        type: text
+    address:
+        label: 'samubra.train::lang.apply.address'
+        type: text
+    company:
+        label: 'samubra.train::lang.apply.company'
+        type: text
     is_reviewed:
         label: 'samubra.train::lang.record.is_reviewed'
         type: switch
         sortable: true
+    is_valid:
+        label: 'samubra.train::lang.record.is_valid'
+        type: switch
+        sortable: true
+    edu_id:
+        label: 'samubra.train::lang.apply.edu_id'
+        type: text
     remark:
         label: 'samubra.train::lang.plugin.remark'
         type: text

@@ -6,17 +6,17 @@ use BackendMenu;
 class Categories extends Controller
 {
     public $implement = ['Backend\Behaviors\ListController','Backend\Behaviors\FormController'];
-    
+
     public $listConfig = 'config_list.yaml';
     public $formConfig = 'config_form.yaml';
 
     public $requiredPermissions = [
-        'category.manage' 
+        'category.manage'
     ];
 
     public function __construct()
     {
         parent::__construct();
-        BackendMenu::setContext('Samubra.Train', 'main-menu-item', 'side-menu-item2');
+        BackendMenu::setContext('Samubra.Train', 'lookup-menu-item', 'category-item');
     }
 }

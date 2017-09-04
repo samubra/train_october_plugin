@@ -3,3 +3,10 @@ fields:
         label: 'samubra.train::lang.plan.type_id'
         oc.commentPosition: ''
         type: dropdown
+        span: auto
+    valid:
+        label: 'samubra.train::lang.record.is_valid'
+        oc.commentPosition: ''
+        default: 0
+        type: switch
+        span: auto

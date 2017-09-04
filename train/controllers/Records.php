@@ -20,6 +20,6 @@ class Records extends Controller
     public function __construct()
     {
         parent::__construct();
-        BackendMenu::setContext('Samubra.Train', 'main-menu-item', 'side-menu-item6');
+        BackendMenu::setContext('Samubra.Train', 'plan-menu-item', 'record-item');
     }
 }

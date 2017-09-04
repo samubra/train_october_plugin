@@ -1,5 +1,6 @@
 title: 数据列表
 modelClass: Samubra\Train\Models\Lookup
+filter: config_filter.yaml
 list: $/samubra/train/models/lookup/columns.yaml
 recordUrl: 'samubra/train/lookups/update/:id'
 noRecordsMessage: 'backend::lang.list.no_records'

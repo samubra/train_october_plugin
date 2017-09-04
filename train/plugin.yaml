@@ -24,46 +24,59 @@ permissions:
         tab: 'samubra.train::lang.record.manage'
         label: 'samubra.train::lang.record.manage'
 navigation:
-    main-menu-item:
+    plan-menu-item:
         label: 培训管理
         url: samubra/train/plans
         icon: icon-building
         permissions:
-            - lookup.manage
+            - plan.manage
         sideMenu:
-            side-menu-item3:
+            plan-item:
                 label: 'samubra.train::lang.plan.manage'
                 url: samubra/train/plans
                 icon: icon-space-shuttle
                 permissions:
                     - plan.manage
-            side-menu-item6:
-                label: 'samubra.train::lang.record.manage'
-                url: samubra/train/records
-                icon: icon-credit-card
-                permissions:
-                    - record.manage
-            side-menu-item5:
+            course-item:
                 label: 'samubra.train::lang.course.manage'
                 url: samubra/train/courses
                 icon: icon-stack-overflow
                 permissions:
                     - course.manage
-            side-menu-item4:
-                label: 'samubra.train::lang.teacher.manage'
-                url: samubra/train/teachers
-                icon: icon-user-secret
+            record-item:
+                label: 'samubra.train::lang.record.manage'
+                url: samubra/train/records
+                icon: icon-credit-card
                 permissions:
-                    - teacher.manage
-            side-menu-item2:
-                label: 'samubra.train::lang.category.manage'
-                url: samubra/train/categories
-                icon: icon-sitemap
+                    - record.manage
+            record-import-item:
+                label: 导入操作证
+                url: samubra/train/records/import
+                icon: icon-cloud-upload
                 permissions:
-                    - category.manage
-            side-menu-item:
+                    - record.manage
+    lookup-menu-item:
+        label: 基础数据
+        url: samubra/train/lookups
+        icon: icon-simplybuilt
+        permissions:
+            - lookup.manage
+        sideMenu:
+            lookup-item:
                 label: 'samubra.train::lang.lookup.manage'
                 url: samubra/train/lookups
                 icon: icon-simplybuilt
                 permissions:
                     - lookup.manage
+            teacher-item:
+                label: 'samubra.train::lang.teacher.manage'
+                url: samubra/train/teachers
+                icon: icon-user-secret
+                permissions:
+                    - teacher.manage
+            category-item:
+                label: 'samubra.train::lang.category.manage'
+                url: samubra/train/categories
+                icon: icon-sitemap
+                permissions:
+                    - category.manage

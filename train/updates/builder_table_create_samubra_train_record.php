@@ -16,7 +16,6 @@ class BuilderTableCreateSamubraTrainRecord extends Migration
             $table->integer('user_id')->nullable()->unsigned();
             $table->integer('type_id')->unsigned();
             $table->integer('edu_id')->unsigned()->nullable();
-            $table->integer('health_id')->unsigned()->nullable();
             $table->string('phone')->nullable();
             $table->string('address')->nullable();
             $table->string('company')->nullable();

@@ -60,6 +60,12 @@ tabs:
             default: 0
             type: switch
             tab: 证件信息
+        is_valid:
+            label: 'samubra.train::lang.record.is_valid'
+            span: auto
+            default: 0
+            type: switch
+            tab: 证件信息
         remark:
             label: 备注列表
             oc.commentPosition: ''
@@ -88,6 +94,37 @@ tabs:
             span: auto
             type: fileupload
             tab: 证件信息
+        phone:
+            label: 'samubra.train::lang.apply.phone'
+            oc.commentPosition: ''
+            span: auto
+            type: text
+            required: 1
+            tab: 联系信息
+        address:
+            label: 'samubra.train::lang.apply.address'
+            oc.commentPosition: ''
+            span: auto
+            type: text
+            required: 1
+            tab: 联系信息
+        company:
+            label: 'samubra.train::lang.apply.company'
+            oc.commentPosition: ''
+            span: auto
+            default: 个体
+            type: text
+            required: 1
+            tab: 联系信息
+        edu:
+            label: 'samubra.train::lang.apply.edu_id'
+            oc.commentPosition: ''
+            nameFrom: name
+            descriptionFrom: description
+            span: auto
+            required: 1
+            type: relation
+            tab: 联系信息
         plans:
             span: full
             path: plans_field

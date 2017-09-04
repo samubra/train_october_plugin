@@ -1,0 +1,11 @@
+scopes:
+    type:
+        label: 数据类型
+        type: group
+        conditions: type in (:filtered)
+        options:
+            plan_status: 培训计划状态
+            apply_status: 培训申请受理状态
+            edu_type: 文化程度
+            health_type: 健康状况
+            teacher_type: 教师类别

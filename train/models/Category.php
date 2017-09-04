@@ -26,4 +26,9 @@ class Category extends Model
      * @var string The database table used by the model.
      */
     public $table = 'samubra_train_category';
+
+    public function scopeDepthWith($query)
+    {
+      return $query->where('depth','<','3');
+    }
 }

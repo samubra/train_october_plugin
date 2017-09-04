@@ -17,11 +17,13 @@ class Record extends Model
 
 
     protected $dates = ['deleted_at'];
-    protected $fillable = ['name','type_id','first_get_date','print_date','review_date','reprint_date','remark','is_reviewed','identity'];
+    protected $fillable = ['name','type_id','first_get_date','print_date','review_date','reprint_date','remark','is_reviewed','identity','edu_id','is_valid','phone','address','company'];
     protected $nullable = ['first_get_date','print_date','review_date','reprint_date','remark'];
 
     protected $cats = [
-      'is_reviewed' => 'boolean'
+      'is_reviewed' => 'boolean',
+      'is_valid' => 'boolean',
+      'remark' => 'array',
     ];
 
     /*
@@ -35,10 +37,10 @@ class Record extends Model
         'print_date' => 'date',
         'review_date' => 'date',
         'reprint_date' => 'date',
-        'is_reviewed' => 'boolean'
-    ];
-    protected $casts = [
-        'remark' => 'array',
+        'is_reviewed' => 'boolean',
+        'is_valid' => 'boolean',
+        'edu_id' => 'required_with:name,identity,health_id,phone,address,company,status_id,pay|exists:samubra_train_lookup,id',
+        'phone' => 'telephone',
     ];
 
     /**
@@ -47,7 +49,8 @@ class Record extends Model
     public $table = 'samubra_train_record';
 
     public $belongsTo = [
-        'record_type' => [Category::class,'key' => 'type_id']
+        'record_type' => [Category::class,'key' => 'type_id'],
+        'edu' => [Lookup::class,'key'=>'edu_id','scope'=>'eduType'],
     ];
     public $attachOne = [
         'photo' => 'System\Models\File'

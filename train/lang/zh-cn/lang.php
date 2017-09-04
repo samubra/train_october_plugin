@@ -70,7 +70,8 @@
         'review_date' => '复审日期',
         'reprint_date' => '换证日期',
         'is_reviewed' => '是否已复审',
-        'manage' => '操作证管理'
+        'manage' => '操作证管理',
+        'is_valid' => '是否有效',
     ],
     'teacher' => [
         'name' => '教师姓名',

@@ -1,5 +1,6 @@
 title: 培训类别列表
 modelClass: Samubra\Train\Models\Category
+filter: config_filter.yaml
 list: $/samubra/train/models/category/columns.yaml
 recordUrl: 'samubra/train/categories/update/:id'
 noRecordsMessage: 'backend::lang.list.no_records'

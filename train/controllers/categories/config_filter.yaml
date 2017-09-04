@@ -1,0 +1,6 @@
+scopes:
+    parent:
+        label: 父级分类
+        modelClass: Samubra\Train\Models\Category
+        conditions: parent_id in (:filtered)
+        nameFrom: name
