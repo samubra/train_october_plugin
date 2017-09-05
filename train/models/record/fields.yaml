@@ -66,7 +66,7 @@ tabs:
             default: 0
             type: switch
             tab: 证件信息
-        remark:
+        _remark:
             label: 备注列表
             oc.commentPosition: ''
             prompt: 添加备注信息
@@ -76,10 +76,11 @@ tabs:
             form:
                 fields:
                     remark:
-                        label: 备注列表
+                        label: 备注信息
                         oc.commentPosition: ''
-                        span: auto
-                        type: text
+                        span: full
+                        type: textarea
+                        size: small
         photo:
             label: 照片
             oc.commentPosition: ''
@@ -99,14 +100,14 @@ tabs:
             oc.commentPosition: ''
             span: auto
             type: text
-            required: 1
+            required: 0
             tab: 联系信息
         address:
             label: 'samubra.train::lang.apply.address'
             oc.commentPosition: ''
             span: auto
             type: text
-            required: 1
+            required: 0
             tab: 联系信息
         company:
             label: 'samubra.train::lang.apply.company'
@@ -114,7 +115,7 @@ tabs:
             span: auto
             default: 个体
             type: text
-            required: 1
+            required: 0
             tab: 联系信息
         edu:
             label: 'samubra.train::lang.apply.edu_id'

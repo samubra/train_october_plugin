@@ -23,7 +23,7 @@ class Record extends Model
     protected $cats = [
       'is_reviewed' => 'boolean',
       'is_valid' => 'boolean',
-      'remark' => 'array',
+      //'remark' => 'array',
     ];
 
     /*
@@ -39,8 +39,9 @@ class Record extends Model
         'reprint_date' => 'date',
         'is_reviewed' => 'boolean',
         'is_valid' => 'boolean',
+	//'remark' => 'json',
         'edu_id' => 'required_with:name,identity,health_id,phone,address,company,status_id,pay|exists:samubra_train_lookup,id',
-        'phone' => 'telephone',
+       // 'phone' => 'telephone',
     ];
 
     /**
