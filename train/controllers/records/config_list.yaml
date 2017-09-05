@@ -1,5 +1,6 @@
 title: 操作证列表
 modelClass: Samubra\Train\Models\Record
+filter: config_filter.yaml
 list: $/samubra/train/models/record/columns.yaml
 recordUrl: 'samubra/train/records/update/:id'
 noRecordsMessage: 'backend::lang.list.no_records'

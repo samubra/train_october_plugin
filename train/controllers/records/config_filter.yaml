@@ -1,0 +1,23 @@
+scopes:
+    valid:
+        label: 证件有效
+        type: switch
+        conditions:
+            - is_valid <> true
+            - is_valid = true
+    reviewed:
+        label: 已复审
+        type: switch
+        conditions:
+            - is_reviewed <> true
+            - is_reviewed = true
+    print_date:
+        label: 发证日期
+        type: daterange
+        conditions: print_date >= ':after' AND print_date <= ':before'
+    type:
+        label: 操作项目
+        modelClass: Samubra\Train\Models\Category
+        conditions: type_id in (:filtered)
+        scope: depth
+        nameFrom: name

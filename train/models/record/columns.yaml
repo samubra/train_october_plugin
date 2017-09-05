@@ -15,6 +15,27 @@ columns:
         sortable: true
         select: name
         relation: record_type
+    phone:
+        label: 'samubra.train::lang.apply.phone'
+        type: text
+        searchable: true
+    address:
+        label: 'samubra.train::lang.apply.address'
+        type: text
+        invisible: true
+        searchable: true
+    company:
+        label: 'samubra.train::lang.apply.company'
+        type: text
+        invisible: true
+        searchable: true
+    edu:
+        label: 'samubra.train::lang.apply.edu_id'
+        type: text
+        sortable: true
+        invisible: true
+        select: name
+        relation: edu
     first_get_date:
         label: 'samubra.train::lang.record.first_get_date'
         type: date
@@ -30,6 +51,7 @@ columns:
         label: 'samubra.train::lang.record.review_date'
         type: date
         searchable: true
+        invisible: true
         sortable: true
     reprint_date:
         label: 'samubra.train::lang.record.reprint_date'
@@ -39,6 +61,10 @@ columns:
         sortable: true
     is_reviewed:
         label: 'samubra.train::lang.record.is_reviewed'
+        type: switch
+        sortable: true
+    is_valid:
+        label: 'samubra.train::lang.record.is_valid'
         type: switch
         sortable: true
     remark:

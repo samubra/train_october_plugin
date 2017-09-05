@@ -27,8 +27,8 @@ class Category extends Model
      */
     public $table = 'samubra_train_category';
 
-    public function scopeDepthWith($query)
+    public function scopeDepth($query)
     {
-      return $query->where('depth','<','3');
+      return $query->where('depth','2');
     }
 }
