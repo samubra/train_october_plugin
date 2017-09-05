@@ -1,0 +1,22 @@
+scopes:
+    can_apply:
+        label: 接受报名
+        type: checkbox
+        conditions: can_apply <> true
+    is_review:
+        label: 复训
+        type: group
+        conditions: is_review in (:filtered)
+        options:
+            0: 初训
+            1: 复训
+            2: 换证
+    start_date:
+        label: 培训日期
+        type: daterange
+        conditions: start_date >= ':after' AND start_date <= ':before'
+    type:
+        label: 操作项目
+        modelClass: Samubra\Train\Models\Category
+        conditions: type_id in (:filtered)
+        nameFrom: name
