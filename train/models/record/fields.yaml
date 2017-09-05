@@ -11,6 +11,34 @@ fields:
         span: auto
         required: 1
         type: text
+    edu:
+        label: 'samubra.train::lang.apply.edu_id'
+        oc.commentPosition: ''
+        nameFrom: name
+        descriptionFrom: description
+        span: auto
+        required: 1
+        type: relation
+    phone:
+        label: 'samubra.train::lang.apply.phone'
+        oc.commentPosition: ''
+        span: auto
+        type: text
+        required: 0
+    address:
+        label: 'samubra.train::lang.apply.address'
+        oc.commentPosition: ''
+        span: auto
+        type: text
+        required: 0
+    company:
+        label: 'samubra.train::lang.apply.company'
+        oc.commentPosition: ''
+        span: auto
+        default: 个体
+        type: text
+        required: 0
+
 tabs:
     fields:
         record_type:
@@ -66,7 +94,7 @@ tabs:
             default: 0
             type: switch
             tab: 证件信息
-        _remark:
+        remark:
             label: 备注列表
             oc.commentPosition: ''
             prompt: 添加备注信息
@@ -95,37 +123,6 @@ tabs:
             span: auto
             type: fileupload
             tab: 证件信息
-        phone:
-            label: 'samubra.train::lang.apply.phone'
-            oc.commentPosition: ''
-            span: auto
-            type: text
-            required: 0
-            tab: 联系信息
-        address:
-            label: 'samubra.train::lang.apply.address'
-            oc.commentPosition: ''
-            span: auto
-            type: text
-            required: 0
-            tab: 联系信息
-        company:
-            label: 'samubra.train::lang.apply.company'
-            oc.commentPosition: ''
-            span: auto
-            default: 个体
-            type: text
-            required: 0
-            tab: 联系信息
-        edu:
-            label: 'samubra.train::lang.apply.edu_id'
-            oc.commentPosition: ''
-            nameFrom: name
-            descriptionFrom: description
-            span: auto
-            required: 1
-            type: relation
-            tab: 联系信息
         plans:
             span: full
             path: plans_field

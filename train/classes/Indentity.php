@@ -2,7 +2,7 @@
 
 use Illuminate\Contracts\Validation\Rule;
 
-class IndentityRule implements Rule
+class Indentity implements Rule
 {
   /**
    * Determine if the validation rule passes.

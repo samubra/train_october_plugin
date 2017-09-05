@@ -2,7 +2,7 @@
 
 use Model;
 use Carbon\Carbon;
-use Samubra\Train\Classes\IndentityRule;
+use Samubra\Train\Classes\Indentity;
 
 /**
  * Model
@@ -20,10 +20,10 @@ class Record extends Model
     protected $fillable = ['name','type_id','first_get_date','print_date','review_date','reprint_date','remark','is_reviewed','identity','edu_id','is_valid','phone','address','company'];
     protected $nullable = ['first_get_date','print_date','review_date','reprint_date','remark'];
 
-    protected $cats = [
+    protected $casts = [
+      'remark' => 'array',
       'is_reviewed' => 'boolean',
       'is_valid' => 'boolean',
-      //'remark' => 'array',
     ];
 
     /*
@@ -31,7 +31,6 @@ class Record extends Model
      */
     public $rules = [
         'name' => ['required','min:2'],
-        //'identity' => ['required',new IndentityRule],
         'type_id' => 'required|exists:samubra_train_category,id',
         'first_get_date' => 'date|date_format:Y-m-d H:i:s',
         'print_date' => 'date',
@@ -39,9 +38,8 @@ class Record extends Model
         'reprint_date' => 'date',
         'is_reviewed' => 'boolean',
         'is_valid' => 'boolean',
-	//'remark' => 'json',
         'edu_id' => 'required_with:name,identity,health_id,phone,address,company,status_id,pay|exists:samubra_train_lookup,id',
-       // 'phone' => 'telephone',
+        'phone' => 'phone',
     ];
 
     /**
@@ -68,10 +66,12 @@ class Record extends Model
         ],
     ];
 
+
     public function beforeValidate()
     {
         $rules = $this->rules;//$rules['identity']
-        $rules['identity'] =['required','unique:samubra_train_record,identity,NULL,id,type_id,'.$this->type_id];
+        $indentity = new Indentity;
+        $rules['identity'] =['required','identity','unique:samubra_train_record,identity,NULL,id,type_id,'.$this->type_id];
 
         if(isset($this->print_date)){
             list($print_year,$print_month,$print_day) = explode('-',$this->print_date);

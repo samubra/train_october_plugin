@@ -22,10 +22,10 @@ class Apply extends Pivot
         'record_id' => 'required',
         'is_review' => 'in:0,1,2',
         'name' => 'min:2',
-        //'identity' => [new IndentityRule()],
+        'identity' => 'required','identity',,
         'edu_id' => 'required_with:name,identity,health_id,phone,address,company,status_id,pay|exists:samubra_train_lookup,id',
         'health_id' => 'required_with:name,identity,edu_id,phone,address,company,status_id,pay|exists:samubra_train_lookup,id',
-        'phone' => 'telephone',
+        'phone' => 'phone',
         'status_id' => 'required_with:name,identity,edu_id,health_id,phone,address,company,pay|exists:samubra_train_lookup,id',
         'pay' => 'numeric',
     ];
