@@ -55,15 +55,18 @@ class Record extends Model
         'photo' => 'System\Models\File'
     ];
     public $belongsToMany = [
-        'plans' => [
-            Plan::class,
-            'table'=>'samubra_train_apply',
-            'otherKey'=>'plan_id',
-            'key'=>'record_id',
-            'pivot'=>['is_review','user_id','name','identity','edu_id','health_id','phone','address','company','status_id','pay','remark'],
-            'pivotModel'=>Apply::class,
-            'timestamps'=>true,
-        ],
+        //'plans' => [
+        //    Plan::class,
+        //    'table'=>'samubra_train_apply',
+        //    'otherKey'=>'plan_id',
+        //    'key'=>'record_id',
+        //    'pivot'=>['is_review','user_id','name','identity','edu_id','health_id','phone','address','company','status_id','pay','remark'],
+        //    'pivotModel'=>Apply::class,
+        //    'timestamps'=>true,
+        //],
+    ];
+    public $hasMany = [
+        'applies' => [Apply::class]
     ];
 
 

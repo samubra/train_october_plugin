@@ -74,6 +74,7 @@ tabs:
         'pivot[phone]':
             label: 'samubra.train::lang.apply.phone'
             oc.commentPosition: ''
+            defaultFrom: phone
             span: auto
             type: text
             tab: 申请信息
@@ -82,12 +83,14 @@ tabs:
             oc.commentPosition: ''
             span: auto
             type: text
+            defaultFrom: address
             tab: 申请信息
         'pivot[company]':
             label: 'samubra.train::lang.apply.company'
             oc.commentPosition: ''
             span: auto
             default: 个体
+            defaultFrom: company
             type: text
             tab: 申请信息
         'pivot[edu]':
@@ -96,6 +99,7 @@ tabs:
             nameFrom: name
             descriptionFrom: description
             span: auto
+            defaultFrom: edu
             required: 1
             type: relation
             tab: 申请信息

@@ -13,11 +13,6 @@ columns:
         type: text
         searchable: true
         sortable: true
-    user_id:
-        label: 'samubra.train::lang.apply.user_id'
-        type: number
-        invisible: true
-        sortable: true
     record_type:
         label: 'samubra.train::lang.plan.type_id'
         type: text
@@ -39,15 +34,21 @@ columns:
         label: 'samubra.train::lang.record.review_date'
         type: date
         searchable: true
+        invisible: true
         sortable: true
     reprint_date:
         label: 'samubra.train::lang.record.reprint_date'
         type: date
         searchable: true
         invisible: true
+        invisible: true
         sortable: true
     is_reviewed:
         label: 'samubra.train::lang.record.is_reviewed'
+        type: switch
+        sortable: true
+    is_valid:
+        label: 'samubra.train::lang.record.is_valid'
         type: switch
         sortable: true
     remark:

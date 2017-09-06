@@ -9,7 +9,7 @@ use Carbon\Carbon;
 class Plan extends Model
 {
     use \October\Rain\Database\Traits\Validation;
-    
+
     use \October\Rain\Database\Traits\SoftDelete;
 
 
@@ -58,15 +58,18 @@ class Plan extends Model
                 'pivotModel'=>PlanCoursePivot::class,
                 'timestamps'=>true,
             ],
-        'records' => [
-            Record::class,
-            'table'=>'samubra_train_apply',
-            'key'=>'plan_id',
-            'otherKey'=>'record_id',
-            'pivot'=>['is_review','user_id','name','identity','edu_id','health_id','phone','address','company','status_id','pay','remark'],
-            'pivotModel'=>Apply::class,
-            'timestamps'=>true,
-        ],
+      //  'records' => [
+      //      Record::class,
+      //      'table'=>'samubra_train_apply',
+      //      'key'=>'plan_id',
+      //      'otherKey'=>'record_id',
+      //      'pivot'=>['is_review','user_id','name','identity','edu_id','health_id','phone','address','company','status_id','pay','remark'],
+      //      'pivotModel'=>Apply::class,
+      //      'timestamps'=>true,
+      //  ],
+    ];
+    public $hasMany = [
+        'applies' => [Apply::class]
     ];
     public $attachMany = [
         'photos' => 'System\Models\File'
@@ -92,6 +95,7 @@ class Plan extends Model
      */
     public function beforeSave()
     {
+      if(!$this->title){
         list($year, $month, $day) = explode("-", $this->start_date);
         $title = $year.'年'.$month.'月巫溪安协';
         $planList = self::where('type_id' ,$this->type_id)->where('status_id',$this->status_id)->whereRaw('YEAR(start_date) = '.$year);
@@ -103,6 +107,8 @@ class Plan extends Model
         $title.= ($planCount+1);
         $title.= '期次';
         $this->title = $title;
+      }
+
 
     }
 

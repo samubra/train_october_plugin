@@ -1,24 +1,24 @@
 <?php namespace Samubra\Train\Models;
 
 use Carbon\Carbon;
-use Model;
+use October\Rain\Database\Pivot;
 use ApplicationException;
+use Samubra\Train\Classes\IndentityRule;
 
-class Apply extends Model
+class ApplyBack extends Pivot
 {
     use \October\Rain\Database\Traits\SoftDelete;
     use \October\Rain\Database\Traits\Validation;
     use \October\Rain\Database\Traits\Nullable;
 
-    public $table = 'samubra_train_apply';
 
     protected $dates = ['deleted_at'];
     protected $casts = [
         'remark' => 'array',
     ];
-    protected $nullable = ['user_id','name','identity','edu_id','health_id','phone','address','company','status_id','pay','remark','operate_score','record_id'];
+    protected $nullable = ['user_id','name','identity','edu_id','health_id','phone','address','company','status_id','pay','remark'];
     public $rules = [
-        'plan_id' => 'required|exists:samubra_train_plan,id',
+        'plan_id' => 'required',
         'record_id' => 'required',
         'is_review' => 'in:0,1,2',
         'name' => 'min:2',
@@ -28,29 +28,19 @@ class Apply extends Model
         'phone' => 'phone',
         'status_id' => 'required_with:name,identity,edu_id,health_id,phone,address,company,pay|exists:samubra_train_lookup,id',
         'pay' => 'numeric',
-        'theory_score' =>'numeric',
-        'operate_score' => 'numeric'
     ];
     public $belongsTo = [
         'health' => [Lookup::class,'key'=>'health_id','scope'=>'healthType'],
         'edu' => [Lookup::class,'key'=>'edu_id','scope'=>'eduType'],
-        'apply_status' => [Lookup::class,'key'=>'status_id','scope'=>'applyStatus'],
-        'plan' =>[Plan::class,'key'=>'plan_id'],
-        'record' => [Record::class,'key'=>'record_id']
+        'apply_status' => [Lookup::class,'key'=>'status_id','scope'=>'applyStatus']
     ];
 
 
-    protected $appends = ['health_name','eud_name','apply_status_name','is_review_text'];
+    protected $appends = ['health_name','eud_name','apply_status_name'];
 
     public function getIsReviewOptions()
     {
         return Plan::isReviewList();
-    }
-    public function getIsReviewTextAttribute()
-    {
-        $arr = $this->getIsReviewOptions();
-
-        return isset($arr[$this->is_review]) ? $arr[$this->is_review]: '未设置';
     }
 
     public function getHealthNameAttribute()

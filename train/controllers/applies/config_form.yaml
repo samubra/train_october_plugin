@@ -1,0 +1,10 @@
+name: Applies
+form: $/samubra/train/models/apply/fields.yaml
+modelClass: Samubra\Train\Models\Apply
+defaultRedirect: samubra/train/applies
+create:
+    redirect: 'samubra/train/applies/update/:id'
+    redirectClose: samubra/train/applies
+update:
+    redirect: samubra/train/applies
+    redirectClose: samubra/train/applies

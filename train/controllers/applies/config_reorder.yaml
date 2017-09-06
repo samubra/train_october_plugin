@@ -1,0 +1,4 @@
+title: Applies
+modelClass: Samubra\Train\Models\Apply
+toolbar:
+    buttons: reorder_toolbar

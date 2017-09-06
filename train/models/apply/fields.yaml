@@ -1,0 +1,130 @@
+fields:
+    plan:
+        label: 'samubra.train::lang.apply.plan_id'
+        oc.commentPosition: ''
+        nameFrom: title
+        descriptionFrom: start_date
+        prompt: '点击 %s 查找操作证'
+        list: $/samubra/train/models/plan/pivotColumns.yaml
+        span: auto
+        required: 1
+        type: recordfinder
+        comment: 必须选择对应的培训计划
+    record:
+        label: 'samubra.train::lang.apply.record_id'
+        oc.commentPosition: ''
+        nameFrom: title
+        descriptionFrom: type.name
+        prompt: '点击 %s 查找操作证'
+        list: $/samubra/train/models/record/manageColumns.yaml
+        span: auto
+        type: recordfinder
+        comment: 新训则无需选择操作证
+    name:
+        label: 'samubra.train::lang.apply.name'
+        oc.commentPosition: ''
+        span: auto
+        disabled: 0
+        hidden: 0
+        required: 1
+        context:
+            - create
+            - preview
+        defaultFrom: name
+        trigger:
+            action: disable
+            field: name
+        type: text
+    identity:
+        label: 'samubra.train::lang.apply.identity'
+        oc.commentPosition: ''
+        span: auto
+        disabled: 0
+        hidden: 0
+        required: 1
+        context:
+            - create
+            - preview
+        defaultFrom: identity
+        type: text
+    phone:
+        label: 'samubra.train::lang.apply.phone'
+        oc.commentPosition: ''
+        defaultFrom: phone
+        required: 1
+        span: auto
+        type: text
+    address:
+        label: 'samubra.train::lang.apply.address'
+        oc.commentPosition: ''
+        required: 1
+        span: auto
+        type: text
+        defaultFrom: address
+    company:
+        label: 'samubra.train::lang.apply.company'
+        oc.commentPosition: ''
+        span: auto
+        default: 个体
+        required: 1
+        defaultFrom: company
+        type: text
+    edu:
+        label: 'samubra.train::lang.apply.edu_id'
+        oc.commentPosition: ''
+        nameFrom: name
+        descriptionFrom: description
+        span: auto
+        defaultFrom: edu
+        required: 1
+        type: relation
+    health:
+        label: 'samubra.train::lang.apply.health_id'
+        oc.commentPosition: ''
+        nameFrom: name
+        descriptionFrom: description
+        span: auto
+        required: 1
+        type: relation
+    apply_status:
+        label: 'samubra.train::lang.apply.status_id'
+        oc.commentPosition: ''
+        nameFrom: name
+        descriptionFrom: description
+        span: auto
+        required: 1
+        type: relation
+    pay:
+        label: 'samubra.train::lang.apply.pay'
+        oc.commentPosition: ''
+        span: auto
+        required: 1
+        default: 0
+        type: number
+    theory_score:
+        label: 'samubra.train::lang.apply.theory_score'
+        oc.commentPosition: ''
+        span: auto
+        default: '0'
+        required: 1
+        type: number
+    operate_score:
+        label: 'samubra.train::lang.apply.operate_score'
+        oc.commentPosition: ''
+        span: auto
+        default: '0'
+        type: number
+    remark:
+        label: 'samubra.train::lang.plugin.remark'
+        oc.commentPosition: ''
+        prompt: 添加备注
+        span: full
+        type: repeater
+        form:
+            fields:
+                item:
+                    label: 备注信息
+                    span: full
+                    size: small
+                    oc.commentPosition: ''
+                    type: textarea

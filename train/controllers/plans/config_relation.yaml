@@ -13,14 +13,15 @@ courses:
         showSearch: true
     pivot:
         form: $/samubra/train/models/course/pivotFields.yaml
-records:
+applies:
     label: 培训学员
     view:
-        list: $/samubra/train/models/record/pivotColumns.yaml
-        toolbarButtons: add|remove
+        list: $/samubra/train/models/apply/columns.yaml
+        toolbarButtons: create|delete
     manage:
-        list: $/samubra/train/models/record/columns.yaml
-        recordsPerPage: 10
-        showSearch: true
-    pivot:
-        form: $/samubra/train/models/record/pivotFields.yaml
+        form: $/samubra/train/models/apply/pivotFields.yaml
+#        list: $/samubra/train/models/apply/columns.yaml
+#        recordsPerPage: 20
+#        showSearch: true
+#    pivot:
+#        form: $/samubra/train/models/record/pivotFields.yaml

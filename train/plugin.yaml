@@ -23,6 +23,9 @@ permissions:
     record.manage:
         tab: 'samubra.train::lang.record.manage'
         label: 'samubra.train::lang.record.manage'
+    apply.manage:
+        tab: 'samubra.train::lang.apply.manage'
+        label: 'samubra.train::lang.apply.manage'
 navigation:
     plan-menu-item:
         label: 培训管理
@@ -31,6 +34,18 @@ navigation:
         permissions:
             - plan.manage
         sideMenu:
+            apply-item:
+                label: 'samubra.train::lang.apply.menu'
+                url: samubra/train/applies
+                icon: icon-paperclip
+                permissions:
+                    - apply.manage
+            record-item:
+                label: 'samubra.train::lang.record.manage'
+                url: samubra/train/records
+                icon: icon-credit-card
+                permissions:
+                    - record.manage
             plan-item:
                 label: 'samubra.train::lang.plan.manage'
                 url: samubra/train/plans
@@ -43,12 +58,6 @@ navigation:
                 icon: icon-stack-overflow
                 permissions:
                     - course.manage
-            record-item:
-                label: 'samubra.train::lang.record.manage'
-                url: samubra/train/records
-                icon: icon-credit-card
-                permissions:
-                    - record.manage
     lookup-menu-item:
         label: 基础数据
         url: samubra/train/lookups

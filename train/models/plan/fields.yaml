@@ -2,9 +2,9 @@ fields:
     title:
         label: 'samubra.train::lang.plan.title'
         span: full
-        disabled: 1
+        disabled: 0
         type: text
-        comment: 该名称为系统自动生成，无需填写
+        comment: 该名称留空则为系统自动生成
 tabs:
     fields:
         train_type:

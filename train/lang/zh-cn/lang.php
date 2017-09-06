@@ -5,19 +5,19 @@
         'created_at' => '创建时间',
         'updated_at' => '修改时间',
         'remark' => '备注',
-        'deleted_at' => '删除'
+        'deleted_at' => '删除',
     ],
     'lookup' => [
         'name' => '名称',
         'code' => '代码',
         'type' => '类别',
-        'manage' => '数据管理'
+        'manage' => '数据管理',
     ],
     'category' => [
         'name' => '类别名称',
         'parent_id' => '父级分类',
         'manage' => '培训类别管理',
-        'depth' => '级别'
+        'depth' => '级别',
     ],
     'apply' => [
         'plan_id' => '培训计划',
@@ -33,14 +33,17 @@
         'company' => '单位名称',
         'status_id' => '受理状态',
         'pay' => '支付金额',
-
+        'manage' => '报名申请管理',
+        'menu' => '报名申请',
+        'operate_score' => '实操成绩',
+        'theory_score' => '理论成绩',
     ],
     'course' => [
         'title' => '课程名称',
         'course_type' => '课程类型',
         'default_teacher_id' => '默认教师',
         'default_hours' => '默认课时',
-        'manage' => '课程管理'
+        'manage' => '课程管理',
     ],
     'plan' => [
         'type_id' => '培训类别',
@@ -55,14 +58,14 @@
         'title' => '培训计划名称',
         'description' => '描述',
         'other_info' => '其他信息',
-        'manage' => '培训计划管理'
+        'manage' => '培训计划管理',
     ],
     'plan_course_relation' => [
         'course_id' => '课程',
         'teacher_id' => '授课教师',
         'hours' => '课时',
         'start_time' => '开始时间',
-        'end_time' => '结束时间'
+        'end_time' => '结束时间',
     ],
     'record' => [
         'first_get_date' => '初领证日期',
@@ -82,6 +85,6 @@
         'company' => '所在单位',
         'edu_id' => '文化程度',
         'type_id' => '资格类别',
-        'manage' => '教师管理'
-    ]
+        'manage' => '教师管理',
+    ],
 ];
