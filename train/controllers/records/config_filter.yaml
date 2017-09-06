@@ -7,8 +7,10 @@ scopes:
             - is_valid = true
     reviewed:
         label: 已复审
-        type: checkbox
-        conditions: is_reviewed <> true
+        type: switch 
+        conditions: 
+            - is_reviewed <> true
+            - is_reviewed = true
     print_date:
         label: 发证日期
         type: daterange

@@ -17,8 +17,12 @@ class RecordsImport extends \Backend\Models\ImportModel
                 //Record::create($data);
                 //var_dump($this->record_type);
                 $subscriber = new Record;
-                $data['type_id'] = $this->record_type;
-                $data['is_valid'] = $this->valid;
+                //$data['type_id'] = $this->record_type;
+                //$data['is_valid'] = $this->valid;
+		if(!is_array($data['remark']))
+		{
+			$data['remark'] = [$data['remark']];
+		}
                 $subscriber->fill($data);
                 //$subscriber->type_id =
                 $subscriber->save();

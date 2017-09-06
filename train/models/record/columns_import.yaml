@@ -40,3 +40,6 @@ columns:
     remark:
         label: 'samubra.train::lang.plugin.remark'
         type: text
+    type_id:
+        label: 'samubra.train::lang.apply.type_id'
+        type: text

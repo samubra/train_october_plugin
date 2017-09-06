@@ -1,8 +1,10 @@
 scopes:
     can_apply:
         label: 接受报名
-        type: checkbox
-        conditions: can_apply <> true
+        type: switch
+        conditions: 
+           - can_apply <> true
+           - can_apply = true
     is_review:
         label: 复训
         type: group
