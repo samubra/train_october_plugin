@@ -41,5 +41,5 @@ columns:
         label: 'samubra.train::lang.plugin.remark'
         type: text
     type_id:
-        label: 'samubra.train::lang.apply.type_id'
+        label: 'samubra.train::lang.plan.type_id'
         type: text
