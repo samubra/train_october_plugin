@@ -49,12 +49,6 @@ navigation:
                 icon: icon-credit-card
                 permissions:
                     - record.manage
-            record-import-item:
-                label: 导入操作证
-                url: samubra/train/records/import
-                icon: icon-cloud-upload
-                permissions:
-                    - record.manage
     lookup-menu-item:
         label: 基础数据
         url: samubra/train/lookups
