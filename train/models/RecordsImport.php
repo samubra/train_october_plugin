@@ -18,13 +18,13 @@ class RecordsImport extends \Backend\Models\ImportModel
                 //var_dump($this->record_type);
                 $subscriber = new Record;
                 if(!isset($data['type_id']))
-		{	
+		{
 			$data['type_id'] = $this->record_type;
 		}
 		if(!isset($data['is_valid'])){
                 	$data['is_valid'] = $this->valid;
 		}
-		if(!is_array($data['remark']))
+		if(isset($data['remark']) && !is_array($data['remark']))
 		{
 			$data['remark'] = [$data['remark']];
 		}

@@ -3,6 +3,7 @@
 use Carbon\Carbon;
 use Model;
 use ApplicationException;
+use Flash;
 
 class Apply extends Model
 {
@@ -19,7 +20,7 @@ class Apply extends Model
     protected $nullable = ['user_id','name','identity','edu_id','health_id','phone','address','company','status_id','pay','remark','operate_score','record_id'];
     public $rules = [
         'plan_id' => 'required|exists:samubra_train_plan,id',
-        'record_id' => 'required',
+        //'record_id' => 'exists:samubra_train_record,id',
         'is_review' => 'in:0,1,2',
         'name' => 'min:2',
         'identity' => 'required|identity',
@@ -40,8 +41,9 @@ class Apply extends Model
     ];
 
 
-    protected $appends = ['health_name','eud_name','apply_status_name','is_review_text'];
+    protected $appends = ['is_review_text'];
 
+    protected $planModel;
     public function getIsReviewOptions()
     {
         return Plan::isReviewList();
@@ -53,7 +55,7 @@ class Apply extends Model
         return isset($arr[$this->is_review]) ? $arr[$this->is_review]: '未设置';
     }
 
-    public function getHealthNameAttribute()
+    /**public function getHealthNameAttribute()
     {
         return $this->health->name;
     }
@@ -62,70 +64,104 @@ class Apply extends Model
         return $this->edu->name;
     }
     public function getApplyStatusNameAttribute()
+    {//$this->status_id ? $this->apply_status->name :
+        return '未填写';
+    }
+    **/
+
+    public function beforeValidate()
     {
-        return $this->status_id ? $this->apply_status->name : '未填写';
+        $this->planModel = Plan::findOrFail($this->plan_id);
+        $this->is_review = $this->planModel->is_review;
+        //Flash::error('Error saving settings');
+        if(!$this->canNotApply())
+          return false;
+        switch ($this->planModel->is_review) {
+          case 0:
+            return is_null($this->record_id);
+            break;
+          default:
+            return $this->checkPlanIsReview();
+            break;
+        }
+
+    }
+    /**
+     * 培训计划报名申请已被关闭时，抛出错误信息
+     * @return boolean
+     */
+    protected function canNotApply()
+    {
+      if(!$this->planModel->can_apply)
+      {
+        throw new ApplicationException('该培训计划不能申请培训报名！');
+        return false;
+      }
+      return true;
     }
 
-    public function beforeSave()
+    /**
+     * 检测当前培训计划是复训时，操作证是否满足要求
+     * @return boolean true则符合复审要求
+     */
+    protected function checkPlanIsReview()
     {
-        $planModel = Plan::findOrFail($this->plan_id);
-        if(!$planModel->can_apply)
+      if(is_null($this->record_id))
         {
-            throw new ApplicationException('该培训计划已停止报名受理！');
-            return false;
+          throw new ApplicationException('该培训计划是复训，请选择与之相符的操作证！');
+          return false;
         }
         $recordModel = Record::findOrFail($this->record_id);
-
-        if($planModel->type_id != $recordModel->type_id)
+        if($this->planModel->type_id != $recordModel->type_id)
         {
             throw new ApplicationException('所选操作证的操作项目和该培训计划不一致，请重新选择添加！');
             return false;
         }
-
-        if($planModel->is_review === 0)
-        {
-            if(!is_null($recordModel->first_get_date) || !is_null($recordModel->print_date) || !is_null($recordModel->review_date) || !is_null($recordModel->reprint_date))
+        $planStartDate = $this->getDateCarbon($planModel->start_date);
+        $reviewDate = $this->getDateCarbon($recordModel->review_date);
+        $reprintDate = $this->getDateCarbon($recordModel->reprint_date);
+        switch ($this->planModel->is_review) {
+          case '1':
+            if(!$this->checkPlanIsReview($reviewDate,$planStartDate) || $recordModel->is_revewed)
             {
-                throw new ApplicationException('该培训计划为新训，不能选择该操作证，请重新选择添加！');
-                return false;
+              throw new ApplicationException('所选操作证不应该在当前时间复审,或者该操作证近期已参加过复审！');
+              return false;
             }
-
-        }elseif ($planModel->is_review >= 1)
-        {
-            if(is_null($recordModel->first_get_date) || is_null($recordModel->print_date) || is_null($recordModel->review_date) || is_null($recordModel->reprint_date))
+            break;
+          case '2':
+            if(!$this->checkPlanIsReview($reprintDate,$planStartDate) || !$recordModel->is_revewed)
             {
-                throw new ApplicationException('该培训计划为复训，但该操作证无发证，请重新选择添加！');
-                return false;
-            }
-
-            list($plan_start_year,$plan_start_month,$plan_start_day) = explode('-',$planModel->start_date);
-            list($review_date_year,$review_date_month,$review_date_day) = explode('-',$recordModel->review_date);
-            list($reprint_date_year,$reprint_date_month,$reprint_date_day) = explode('-',$recordModel->reprint_date);
-
-            $planStartDate = Carbon::createFromDate($plan_start_year,$plan_start_month,$plan_start_day);
-            $recordReviewDate = Carbon::createFromDate($review_date_year,$review_date_month,$review_date_day);
-            $recordReprintDate = Carbon::createFromDate($reprint_date_year,$reprint_date_month,$reprint_date_day);
-            if($planModel->is_review === 1)
-            {
-                $startDate = $planStartDate->copy();
-                $reviewDate = $recordReviewDate->copy();
-                $reprintDate = $recordReprintDate->copy();
-
-                if(
-                    !(($startDate->greaterThanOrEqualTo($reviewDate->subMonths(2)) && $startDate->lessThanOrEqualTo($reviewDate->addMonths(2)->endOfMonth()) && !$recordModel->is_reviewed)
-                    || ($startDate->greaterThanOrEqualTo($reprintDate->subMonths(2)) && $startDate->lessThanOrEqualTo($reprintDate->addMonths(2)) && $recordModel->is_reviewed))
-                )
-                {
-                    //var_dump($reprintDate->toDateString());
-                    throw new ApplicationException('该操作证不在允许的复审或换证日期范围内，请重新选择添加！');
-                    return false;
-                }
-            }elseif(!($planStartDate->greaterThanOrEqualTo($recordReprintDate->subMonths(2))&& $planStartDate->lessThanOrEqualTo($recordReprintDate->addMonths(2)) && $recordModel->is_reviewed)){
-                throw new ApplicationException('该操作证不在允许的换证日期范围内，请重新选择添加！');
-                return false;
+              throw new ApplicationException('所选操作证不应该在当前时间换证,或者当前操作证已失效！');
+              return false;
             }
         }
+        if($recordModel->name != $this->name || $recordModel->identity != $this->identity)
+        {
+          throw new ApplicationException('操作证的信息与所填信息不一致，请核对后再提交！');
+          return false;
+        }
+        return true;
+    }
+    /**
+     * 检查复审日期是否在允许的培训日期内，复审日期必须在培训日期前2个月
+     * @param  Carbon $date          复审或换证日期对象
+     * @param  Carbon $planStartDate 培训开始日期对象
+     * @return boolean             true则当前操作证在复审日期范围内
+     */
+    protected function checkReviewData(Carbon $date, Carbon $planStartDate)
+    {
+      return $planStartDate->lessThanOrEqualTo($date) && $planStartDate->greaterThanOrEqualTo($date->subMonths(2));
 
+    }
+    /**
+     * 返回日期对象
+     * @param  init $date 日期
+     * @return subject       Carbon日期对象
+     */
+    protected function getDateCarbon($date)
+    {
+      list($year,$month,$day) = explode('-',$date);
+      return Carbon::createFromDate($year,$month,$day);
     }
 
 }

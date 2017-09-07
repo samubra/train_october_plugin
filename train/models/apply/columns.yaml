@@ -25,7 +25,7 @@ columns:
     record:
         label: 'samubra.train::lang.apply.record_id'
         select: name
-        relation: plan
+        relation: record
         invisible: true
     user_id:
         label: 'samubra.train::lang.apply.user_id'
