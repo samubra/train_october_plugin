@@ -28,9 +28,6 @@ fields:
         hidden: 0
         required: 1
         defaultFrom: name
-        trigger:
-            action: disable
-            field: name
         type: text
     identity:
         label: 'samubra.train::lang.apply.identity'
@@ -39,7 +36,6 @@ fields:
         disabled: 0
         hidden: 0
         required: 1
-        defaultFrom: identity
         type: text
     phone:
         label: 'samubra.train::lang.apply.phone'

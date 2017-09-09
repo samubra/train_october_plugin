@@ -68,20 +68,23 @@ class Apply extends Model
         return '未填写';
     }
     **/
-
-    public function beforeValidate()
+    public function beforeSave()
     {
         $this->planModel = Plan::findOrFail($this->plan_id);
         $this->is_review = $this->planModel->is_review;
         //Flash::error('Error saving settings');
-        if(!$this->canNotApply())
-          return false;
+        if(is_null($this->id))
+          $this->canNotApply();
         switch ($this->planModel->is_review) {
           case 0:
-            return is_null($this->record_id);
+            if(!is_null($this->record_id))
+                {
+                  throw new ApplicationException('该培训计划为新训，不能选择操作证！');
+                  return false;
+                }
             break;
           default:
-            return $this->checkPlanIsReview();
+            $this->checkPlanIsReview();
             break;
         }
 
@@ -97,7 +100,6 @@ class Apply extends Model
         throw new ApplicationException('该培训计划不能申请培训报名！');
         return false;
       }
-      return true;
     }
 
     /**
@@ -117,19 +119,19 @@ class Apply extends Model
             throw new ApplicationException('所选操作证的操作项目和该培训计划不一致，请重新选择添加！');
             return false;
         }
-        $planStartDate = $this->getDateCarbon($planModel->start_date);
+        $planStartDate = $this->getDateCarbon($this->planModel->start_date);
         $reviewDate = $this->getDateCarbon($recordModel->review_date);
         $reprintDate = $this->getDateCarbon($recordModel->reprint_date);
         switch ($this->planModel->is_review) {
           case '1':
-            if(!$this->checkPlanIsReview($reviewDate,$planStartDate) || $recordModel->is_revewed)
+            if(!$this->checkReviewData($reviewDate,$planStartDate))
             {
-              throw new ApplicationException('所选操作证不应该在当前时间复审,或者该操作证近期已参加过复审！');
+              throw new ApplicationException('所选操作证不应该在当前时间复审！');
               return false;
             }
             break;
           case '2':
-            if(!$this->checkPlanIsReview($reprintDate,$planStartDate) || !$recordModel->is_revewed)
+            if(!$this->checkReviewData($reprintDate,$planStartDate) || !$recordModel->is_revewed)
             {
               throw new ApplicationException('所选操作证不应该在当前时间换证,或者当前操作证已失效！');
               return false;
