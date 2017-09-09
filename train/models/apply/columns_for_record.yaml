@@ -1,0 +1,89 @@
+columns:
+    id:
+        label: ID
+        type: number
+    name:
+        label: 'samubra.train::lang.apply.name'
+        type: text
+        searchable: true
+        sortable: true
+    identity:
+        label: 'samubra.train::lang.apply.identity'
+        type: text
+        searchable: true
+        sortable: true
+    plan_start_date:
+        label: 'samubra.train::lang.plan.start_date'
+        select: start_date
+        relation: plan
+    plan_end_date:
+        label: 'samubra.train::lang.plan.end_date'
+        select: end_date
+        relation: plan
+    is_review:
+        label: 'samubra.train::lang.apply.is_review'
+        type: switch
+        sortable: true
+        invisible: false
+    user_id:
+        label: 'samubra.train::lang.apply.user_id'
+        type: number
+        invisible: true
+    edu:
+        label: 'samubra.train::lang.apply.edu_id'
+        select: name
+        relation: edu
+        invisible: true
+    health:
+        label: 'samubra.train::lang.apply.health_id'
+        select: name
+        relation: health
+        invisible: true
+    phone:
+        label: 'samubra.train::lang.apply.phone'
+        type: text
+        default: 未填写
+        sortable: true
+    address:
+        label: 'samubra.train::lang.apply.address'
+        type: text
+        default: 未填写
+        sortable: true
+        invisible: true
+    company:
+        label: 'samubra.train::lang.apply.company'
+        type: text
+        default: 未填写
+        sortable: true
+    apply_status:
+        label: 'samubra.train::lang.apply.status_id'
+        select: name
+        relation: apply_status
+    pay:
+        label: 'samubra.train::lang.apply.pay'
+        type: number
+        default: 未缴费
+    theory_score:
+        label: theory_score
+        type: number
+        invisible: true
+    operate_score:
+        label: operate_score
+        type: number
+        invisible: true
+    remark:
+        label: remark
+        type: text
+        invisible: true
+    created_at:
+        label: created_at
+        type: datetime
+        invisible: true
+    updated_at:
+        label: updated_at
+        type: datetime
+        invisible: true
+    deleted_at:
+        label: deleted_at
+        type: datetime
+        invisible: true

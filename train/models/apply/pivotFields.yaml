@@ -9,6 +9,7 @@ fields:
         span: auto
         type: recordfinder
         comment: 新训无需填写,复训必须选择对应的操作证
+        recordsPerPage: 10
     name:
         label: 'samubra.train::lang.apply.name'
         oc.commentPosition: ''

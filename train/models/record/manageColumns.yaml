@@ -22,23 +22,27 @@ columns:
     first_get_date:
         label: 'samubra.train::lang.record.first_get_date'
         type: date
+        format: Y-m-d
         searchable: true
         invisible: true
         sortable: true
     print_date:
         label: 'samubra.train::lang.record.print_date'
         type: date
+        format: Y-m-d
         searchable: true
         sortable: true
     review_date:
         label: 'samubra.train::lang.record.review_date'
         type: date
+        format: Y-m-d
         searchable: true
         invisible: true
         sortable: true
     reprint_date:
         label: 'samubra.train::lang.record.reprint_date'
         type: date
+        format: Y-m-d
         searchable: true
         invisible: true
         invisible: true
@@ -59,14 +63,17 @@ columns:
     created_at:
         label: 'samubra.train::lang.plugin.created_at'
         type: datetime
+        format: Y-m-d H:i:s
         invisible: true
         sortable: true
     updated_at:
         label: 'samubra.train::lang.plugin.updated_at'
         type: datetime
+        format: Y-m-d H:i:s
         sortable: true
     deleted_at:
         label: 'samubra.train::lang.plugin.deleted_at'
         type: datetime
         invisible: true
+        format: Y-m-d H:i:s
         sortable: true

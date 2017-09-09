@@ -16,7 +16,7 @@ courses:
 applies:
     label: 培训学员
     view:
-        list: $/samubra/train/models/apply/columns.yaml
+        list: $/samubra/train/models/apply/pivotColumns.yaml
         toolbarButtons: create|delete
     manage:
         form: $/samubra/train/models/apply/pivotFields.yaml

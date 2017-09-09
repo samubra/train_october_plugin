@@ -1,0 +1,5 @@
+export:
+    title: 导出培训申请
+    modelClass: Samubra\Train\Models\AppliesExport
+    list: $/samubra/train/models/apply/columns.yaml
+    form: $/samubra/train/models/apply/fields_export.yaml

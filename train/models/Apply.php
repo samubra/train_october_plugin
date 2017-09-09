@@ -4,7 +4,7 @@ use Carbon\Carbon;
 use Model;
 use ApplicationException;
 use Flash;
-use Rule;
+use Illuminate\Validation\Rule;
 
 class Apply extends Model
 {
@@ -57,7 +57,7 @@ class Apply extends Model
     }
     /**
      * 在验证之前添加去重复的验证规则
-     * 
+     *
      */
     public function beforeValidate()
     {

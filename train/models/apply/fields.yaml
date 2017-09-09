@@ -10,6 +10,7 @@ fields:
         required: 1
         type: recordfinder
         comment: 必须选择对应的培训计划
+        recordsPerPage: 10
     record:
         label: 'samubra.train::lang.apply.record_id'
         oc.commentPosition: ''
@@ -20,6 +21,7 @@ fields:
         span: auto
         type: recordfinder
         comment: 新训则无需选择操作证
+        recordsPerPage: 10
     name:
         label: 'samubra.train::lang.apply.name'
         oc.commentPosition: ''

@@ -1,0 +1,40 @@
+fields:
+    plan_or_record:
+        label: 导出范围
+        type: dropdown
+        span: auto
+        required: 1
+        placeholder: -- 请选择一个导出范围 --
+        options:
+            0: 培训计划
+            1: 操作证
+    plan_select:
+        label: 'samubra.train::lang.apply.plan_id'
+        oc.commentPosition: ''
+        comment: 导出范围设置为"培训计划"时，必须选择
+        type: dropdown
+        span: auto
+        trigger:
+          action: show
+          field: plan_or_record
+          condition: value[0]
+    record_select:
+        label: 'samubra.train::lang.apply.identity'
+        oc.commentPosition: ''
+        comment: 导出范围设置为"操作证"时，必须填写操作证的身份证号码
+        type: text
+        span: right
+        trigger:
+          action: show
+          field: plan_or_record
+          condition: value[1]
+    record_type:
+        label: 'samubra.train::lang.plan.type_id'
+        oc.commentPosition: ''
+        comment: 导出范围设置为"操作证"时，必须选择该操作证的培训类别
+        type: dropdown
+        span: auto
+        trigger:
+          action: show
+          field: plan_or_record
+          condition: value[1]

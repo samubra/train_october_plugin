@@ -123,11 +123,11 @@ tabs:
             span: auto
             type: fileupload
             tab: 证件信息
-        plans:
+        applies:
             span: full
             path: plans_field
             context:
                 - update
                 - preview
             type: partial
-            tab: 培训信息
+            tab: 培训记录
