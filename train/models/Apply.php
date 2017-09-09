@@ -4,6 +4,7 @@ use Carbon\Carbon;
 use Model;
 use ApplicationException;
 use Flash;
+use Rule;
 
 class Apply extends Model
 {
@@ -22,7 +23,7 @@ class Apply extends Model
         'plan_id' => 'required|exists:samubra_train_plan,id',
         //'record_id' => 'exists:samubra_train_record,id',
         'is_review' => 'in:0,1,2',
-        'name' => 'min:2',
+        'name' => 'required|min:2',
         'identity' => 'required|identity',
         'edu_id' => 'required_with:name,identity,health_id,phone,address,company,status_id,pay|exists:samubra_train_lookup,id',
         'health_id' => 'required_with:name,identity,edu_id,phone,address,company,status_id,pay|exists:samubra_train_lookup,id',
@@ -54,40 +55,63 @@ class Apply extends Model
 
         return isset($arr[$this->is_review]) ? $arr[$this->is_review]: '未设置';
     }
-
-    /**public function getHealthNameAttribute()
+    /**
+     * 在验证之前添加去重复的验证规则
+     * 
+     */
+    public function beforeValidate()
     {
-        return $this->health->name;
+      //$this->getPlanModel();
+      $rules = $this->rules;
+      $planId = $this->plan_id;
+        if(!is_null($this->record_id)){
+          $recordIdRule = Rule::unique($this->table)->where(function ($query) use($planId){
+              $query->where('plan_id', $planId);
+          });
+          if(!is_null($this->id)){
+            $recordIdRule = $recordIdRule->ignore($this->id);
+          }
+          $rules['record_id'] = ['exists:samubra_train_record,id',$recordIdRule];
+        }else{
+          $indentity = $this->indentity;
+          $indentityRule = Rule::unique($this->table)->where(function ($query) use($planId,$indentity){
+              $query->where('plan_id', $planId)->where('indentity',$indentity);
+          });
+          if(!is_null($this->id)){
+            $indentityRule = $indentityRule->ignore($this->id);
+          }
+          $rules['identity'] = ['required','identity',$indentityRule];
+        }
+        $this->rules = $rules;
     }
-    public function getEduNameAttribute()
-    {
-        return $this->edu->name;
-    }
-    public function getApplyStatusNameAttribute()
-    {//$this->status_id ? $this->apply_status->name :
-        return '未填写';
-    }
-    **/
+    /**
+     * 保存实例前检查申请是否符合培训计划限制条件
+     * @return [type] [description]
+     */
     public function beforeSave()
     {
-        $this->planModel = Plan::findOrFail($this->plan_id);
+        $this->getPlanModel();
         $this->is_review = $this->planModel->is_review;
         //Flash::error('Error saving settings');
         if(is_null($this->id))
-          $this->canNotApply();
+          $this->canNotApply();//新添加时，检查培训计划是否允许报名
         switch ($this->planModel->is_review) {
-          case 0:
+          case 0://新训时不需要提供操作证
             if(!is_null($this->record_id))
                 {
                   throw new ApplicationException('该培训计划为新训，不能选择操作证！');
                   return false;
                 }
             break;
-          default:
+          default://复训或换证时需要检查包括时间是否允许，是否有效等！
             $this->checkPlanIsReview();
             break;
         }
 
+    }
+    protected function getPlanModel()
+    {
+      $this->planModel = Plan::findOrFail($this->plan_id);
     }
     /**
      * 培训计划报名申请已被关闭时，抛出错误信息
