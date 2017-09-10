@@ -69,4 +69,9 @@ class Lookup extends Model
     {
         return $query->type('apply_status');
     }
+
+    public function getApplyStatusOptions()
+    {
+      return self::applyStatus()->lists('name','id');
+    }
 }

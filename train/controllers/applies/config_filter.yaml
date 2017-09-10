@@ -1,0 +1,22 @@
+scopes:
+    plan:
+        label: 培训计划
+        modelClass: Samubra\Train\Models\Plan
+        conditions: plan_id in (:filtered)
+        nameFrom: title
+    apply_status:
+        label: 受理状态
+        type: group
+        modelClass: Samubra\Train\Models\Lookup
+        conditions: status_id in (:filtered)
+        options: getApplyStatusOptions
+    created_at:
+        label: 申请日期
+        type: daterange
+        conditions: created_at >= ':after' AND created_at <= ':before'
+    review:
+        label: 新/复训
+        type: switch
+        conditions:
+            - is_review <> true
+            - is_review = true

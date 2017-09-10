@@ -2,7 +2,7 @@ scopes:
     can_apply:
         label: 接受报名
         type: switch
-        conditions: 
+        conditions:
            - can_apply <> true
            - can_apply = true
     is_review:
@@ -19,6 +19,7 @@ scopes:
         conditions: start_date >= ':after' AND start_date <= ':before'
     type:
         label: 操作项目
+        type: group
         modelClass: Samubra\Train\Models\Category
         conditions: type_id in (:filtered)
-        nameFrom: name
+        options: getTypeOptions

@@ -27,8 +27,13 @@ class Category extends Model
      */
     public $table = 'samubra_train_category';
 
-    public function scopeDepth($query)
+    public function scopeDepth($query,$depth = 2)
     {
       return $query->where('depth','2');
+    }
+
+    public function getTypeOptions()
+    {
+      return self::depth()->lists('name','id');
     }
 }

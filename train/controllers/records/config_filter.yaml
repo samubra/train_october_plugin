@@ -7,8 +7,8 @@ scopes:
             - is_valid = true
     reviewed:
         label: 已复审
-        type: switch 
-        conditions: 
+        type: switch
+        conditions:
             - is_reviewed <> true
             - is_reviewed = true
     print_date:
@@ -17,7 +17,7 @@ scopes:
         conditions: print_date >= ':after' AND print_date <= ':before'
     type:
         label: 操作项目
+        type: group
         modelClass: Samubra\Train\Models\Category
         conditions: type_id in (:filtered)
-        scope: depth
-        nameFrom: name
+        options: getTypeOptions
