@@ -17,9 +17,10 @@ class Plan extends Model
     protected $dates = ['deleted_at'];
 
     protected $casts = [
-        'other_info' => 'array',
+        //'other_info' => 'array',
         'can_apply' => 'boolean'
     ];
+    protected $jsonable = ['other_info'];
     /*
      * Validation
      */
@@ -35,7 +36,7 @@ class Plan extends Model
         'contact' => 'required',
         'phone' => 'required|digits:11',
         'description' => 'required',
-        'other_info' => 'json'
+        //'other_info' => 'json'
     ];
 
     /**

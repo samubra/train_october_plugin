@@ -16,8 +16,9 @@ class Apply extends Model
 
     protected $dates = ['deleted_at'];
     protected $casts = [
-        'remark' => 'array',
+      //  'remark' => 'array',
     ];
+    protected $jsonable = ['remark'];
     protected $nullable = ['user_id','name','identity','edu_id','health_id','phone','address','company','status_id','pay','remark','operate_score','record_id'];
     public $rules = [
         'plan_id' => 'required|exists:samubra_train_plan,id',

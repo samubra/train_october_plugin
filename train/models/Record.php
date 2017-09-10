@@ -21,10 +21,12 @@ class Record extends Model
     protected $nullable = ['first_get_date','print_date','review_date','reprint_date','remark'];
 
     protected $casts = [
-      'remark' => 'array',
+      //'remark' => 'array',
       'is_reviewed' => 'boolean',
-      'is_valid' => 'boolean',
+      'is_valid' => 'remark',
     ];
+
+    protected $jsonable = ['other_info'];
 
     /*
      * Validation
