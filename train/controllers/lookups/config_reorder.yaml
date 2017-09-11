@@ -1,4 +1,4 @@
-title: Lookups
+title: 基础数据
 modelClass: Samubra\Train\Models\Lookup
 toolbar:
     buttons: reorder_toolbar

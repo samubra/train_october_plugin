@@ -30,7 +30,7 @@ navigation:
     plan-menu-item:
         label: 培训管理
         url: samubra/train/plans
-        icon: icon-building
+        icon: icon-tasks
         permissions:
             - plan.manage
         sideMenu:
@@ -46,37 +46,6 @@ navigation:
                 icon: icon-credit-card
                 permissions:
                     - record.manage
-            plan-item:
-                label: 'samubra.train::lang.plan.manage'
-                url: samubra/train/plans
-                icon: icon-space-shuttle
-                permissions:
-                    - plan.manage
-            course-item:
-                label: 'samubra.train::lang.course.manage'
-                url: samubra/train/courses
-                icon: icon-stack-overflow
-                permissions:
-                    - course.manage
-    lookup-menu-item:
-        label: 基础数据
-        url: samubra/train/lookups
-        icon: icon-simplybuilt
-        permissions:
-            - lookup.manage
-        sideMenu:
-            lookup-item:
-                label: 'samubra.train::lang.lookup.manage'
-                url: samubra/train/lookups
-                icon: icon-simplybuilt
-                permissions:
-                    - lookup.manage
-            teacher-item:
-                label: 'samubra.train::lang.teacher.manage'
-                url: samubra/train/teachers
-                icon: icon-user-secret
-                permissions:
-                    - teacher.manage
             category-item:
                 label: 'samubra.train::lang.category.manage'
                 url: samubra/train/categories

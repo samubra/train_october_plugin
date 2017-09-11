@@ -18,6 +18,6 @@ class Teachers extends Controller
     public function __construct()
     {
         parent::__construct();
-        BackendMenu::setContext('Samubra.Train', 'lookup-menu-item', 'teacher-item');
+        BackendMenu::setContext('Samubra.Train', 'plan-menu-item', 'plan-item');
     }
 }

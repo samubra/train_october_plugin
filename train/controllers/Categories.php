@@ -17,6 +17,6 @@ class Categories extends Controller
     public function __construct()
     {
         parent::__construct();
-        BackendMenu::setContext('Samubra.Train', 'lookup-menu-item', 'category-item');
+        BackendMenu::setContext('Samubra.Train', 'plan-menu-item', 'category-item');
     }
 }

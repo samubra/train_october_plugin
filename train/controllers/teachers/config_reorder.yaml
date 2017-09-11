@@ -1,5 +1,5 @@
 title: 教师
 modelClass: Samubra\Train\Models\Teacher
-nameFrom: 那么
+nameFrom: name
 toolbar:
     buttons: reorder_toolbar

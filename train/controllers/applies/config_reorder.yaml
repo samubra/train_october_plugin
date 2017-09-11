@@ -1,4 +1,4 @@
-title: Applies
+title: 培训申请
 modelClass: Samubra\Train\Models\Apply
 toolbar:
     buttons: reorder_toolbar

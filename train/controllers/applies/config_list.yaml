@@ -1,4 +1,4 @@
-title: 报名申请
+title: 培训申请
 modelClass: Samubra\Train\Models\Apply
 list: $/samubra/train/models/apply/columns.yaml
 filter: config_filter.yaml

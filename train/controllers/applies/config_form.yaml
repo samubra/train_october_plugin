@@ -1,4 +1,4 @@
-name: Applies
+name: 培训申请
 form: $/samubra/train/models/apply/fields.yaml
 modelClass: Samubra\Train\Models\Apply
 defaultRedirect: samubra/train/applies
