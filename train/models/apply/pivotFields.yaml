@@ -2,8 +2,8 @@ fields:
     record:
         label: 'samubra.train::lang.apply.record_id'
         oc.commentPosition: ''
-        nameFrom: title
-        descriptionFrom: type.name
+        nameFrom: name
+        descriptionFrom: identity
         prompt: '点击 %s 查找操作证'
         list: $/samubra/train/models/record/manageColumns.yaml
         span: auto

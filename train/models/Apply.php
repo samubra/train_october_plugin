@@ -66,22 +66,25 @@ class Apply extends Model
       $rules = $this->rules;
       $planId = $this->plan_id;
         if(!is_null($this->record_id)){
-          $recordIdRule = Rule::unique($this->table)->where(function ($query) use($planId){
-              $query->where('plan_id', $planId);
-          });
+         // $recordIdRule = Rule::unique($this->table)->where(function ($query) use($planId){
+          //    $query->wherePlanId( $planId);
+          //});
+	$recordIdRule = 'unique:samubra_train_apply,record_id,';
           if(!is_null($this->id)){
-            $recordIdRule = $recordIdRule->ignore($this->id);
+            $recordIdRule = $recordIdRule.$this->id;
           }
-          $rules['record_id'] = ['exists:samubra_train_record,id',$recordIdRule];
+          //$rules['record_id'] = ['exists:samubra_train_record,id',$recordIdRule];
+	$rules['record_id'] = ['exists:samubra_train_record,id',$recordIdRule.',id,plan_id,'.$planId];
         }else{
           $indentity = $this->indentity;
-          $indentityRule = Rule::unique($this->table)->where(function ($query) use($planId,$indentity){
-              $query->where('plan_id', $planId)->where('indentity',$indentity);
-          });
+          //$indentityRule = Rule::unique($this->table)->where(function ($query) use($planId,$indentity){
+          //    $query->where('plan_id', $planId)->where('indentity',$indentity);
+          //});
+	$indentityRule = 'unique:samubra_train_apply,indentity,';	
           if(!is_null($this->id)){
-            $indentityRule = $indentityRule->ignore($this->id);
+            $indentityRule = $indentityRule.$this->id;
           }
-          $rules['identity'] = ['required','identity',$indentityRule];
+          $rules['identity'] = ['required','identity',$indentityRule.',id,plan_id,'.$planId.',indentity,'.$indentity];
         }
         $this->rules = $rules;
     }
