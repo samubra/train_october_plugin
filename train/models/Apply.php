@@ -20,16 +20,17 @@ class Apply extends Model
     ];
     protected $jsonable = ['remark'];
     protected $nullable = ['user_id','name','identity','edu_id','health_id','phone','address','company','status_id','pay','remark','operate_score','record_id'];
+    protected $fillable = ['plan_id','user_id','name','identity','edu_id','health_id','phone','address','company','status_id','pay','remark','operate_score','record_id'];
     public $rules = [
-        'plan_id' => 'required|exists:samubra_train_plan,id',
+        'plan_id' => 'exists:samubra_train_plan,id',
         //'record_id' => 'exists:samubra_train_record,id',
         'is_review' => 'in:0,1,2',
         'name' => 'required|min:2',
         'identity' => 'required|identity',
-        'edu_id' => 'required_with:name,identity,health_id,phone,address,company,status_id,pay|exists:samubra_train_lookup,id',
-        'health_id' => 'required_with:name,identity,edu_id,phone,address,company,status_id,pay|exists:samubra_train_lookup,id',
+        'edu_id' => 'required_with:name,identity,phone,address,company|exists:samubra_train_lookup,id',
+        'health_id' => 'exists:samubra_train_lookup,id',
         'phone' => 'phone',
-        'status_id' => 'required_with:name,identity,edu_id,health_id,phone,address,company,pay|exists:samubra_train_lookup,id',
+        'status_id' => 'exists:samubra_train_lookup,id',
         'pay' => 'numeric',
         'theory_score' =>'numeric',
         'operate_score' => 'numeric'
@@ -80,11 +81,11 @@ class Apply extends Model
           //$indentityRule = Rule::unique($this->table)->where(function ($query) use($planId,$indentity){
           //    $query->where('plan_id', $planId)->where('indentity',$indentity);
           //});
-	$indentityRule = 'unique:samubra_train_apply,indentity,';	
+	$indentityRule = 'unique:samubra_train_apply,identity,';
           if(!is_null($this->id)){
             $indentityRule = $indentityRule.$this->id;
           }
-          $rules['identity'] = ['required','identity',$indentityRule.',id,plan_id,'.$planId.',indentity,'.$indentity];
+          $rules['identity'] = ['required','identity',$indentityRule.',id,plan_id,'.$planId.',identity,'.$indentity];
         }
         $this->rules = $rules;
     }
@@ -95,6 +96,8 @@ class Apply extends Model
     public function beforeSave()
     {
         $this->getPlanModel();
+        if(!$this->status_id)
+            $this->status_id = 1;
         $this->is_review = $this->planModel->is_review;
         //Flash::error('Error saving settings');
         if(is_null($this->id))

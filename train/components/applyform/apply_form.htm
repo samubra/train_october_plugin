@@ -1,0 +1,66 @@
+<div class="card-panel hoverable">
+  <form id="applyForm"
+        data-request="{{ __SELF__ }}::onSaveApply"
+        data-request-redirect="{{ planList|page }}"
+        data-request-update="'{{ __SELF__ }}::list': '#result','{{ __SELF__ }}::record': '#record'"
+        data-request-success="$('#identity').val('');$('#name').val('');console.log(data)"
+>
+    <input name="plan_id" type="hidden" value="{{ plan.id }}">
+    <input name="type_id" type="hidden" value="{{ plan.type_id }}">
+    {% if record %}<input name="record_id" type="hidden" value="{{ record.id }}"{% endif %}
+    <div class="row">
+        <div class="input-field col s12">
+            <input id="identity" type="text" class="validate" name="identity" value="{{ record ? record.identity : ''}}" {{ record ? "disabled" : 'placeholder="输入身份证号码"'}}>
+            <label for="identity" class="col-lg-2 control-label">身份证号码</label>
+            <span data-validate-for="identity"></span>
+        </div>
+        <div class="input-field col s12">
+            <input type="text" class="validate" id="name" name="name" value="{{ record ? record.name : ''}}" {{ record ? "disabled" : 'placeholder="输入姓名"'}}>
+            <label for="name" class="col-lg-2 control-label">姓名</label>
+            <span data-validate-for="name"></span>
+        </div>
+        <div class="input-field col s12">
+            <select class="form-control" id="edu_id" name="edu_id">
+              {% if record %}
+                {% for id,edu in eduOptions %}
+                <option value="{{ id }}" {{ record.edu_id==id ? "selected" : "" }}>{{ edu }}</option>
+                {% endfor %}
+              {% else %}
+                <option value="" disabled selected>选择你的文化程度...</option>
+                {% for id,edu in eduOptions %}
+                <option value="{{ id }}" {{ record ? record.name : ''}}>{{ edu }}</option>
+                {% endfor %}
+              {% endif %}
+            </select>
+            <label for="edu_id" class="">文化程度</label>
+            <span data-validate-for="edu_id"></span>
+        </div>
+        <div class="input-field col s12">
+            <label for="phone" class="col-lg-2 control-label">联系电话</label>
+            <input type="text" class="form-control validate" id="phone" name="phone" value="{{ record ? record.phone : ''}}" {{ record ? "" : 'placeholder="输入手机号码"'}} >
+            <span data-validate-for="phone"></span>
+        </div>
+        <div class="input-field col s12">
+            <label for="address" class="col-lg-2 control-label">联系地址</label>
+            <input type="text" class="form-control validate" id="address" name="address"  value="{{ record ? record.address : ''}}" {{ record ? "" : 'placeholder="输入联系地址"'}}>
+            <span data-validate-for="address"></span>
+        </div>
+        <div class="input-field col s12">
+            <input type="text" class="form-control validate" id="company" name="company"  value="{{ record ? record.company : ''}}" {{ record ? "" : 'placeholder="输入单位名称，无单位则填个体"'}}>
+            <label for="company" class="col-lg-2 control-label">单位名称</label>
+            <span data-validate-for="company"></span>
+        </div>
+        <div class="input-field col s12">
+              <button class="btn-large waves-effect waves-light" type="submit" name="action">提交申请
+                <i class="material-icons right">send</i>
+              </button>
+        </div>
+      </div>
+</form>
+</div>
+<script>
+$(document).ready(function() {
+    $('select').material_select();
+    Materialize.updateTextFields();
+  });
+</script>

@@ -9,7 +9,7 @@ class Plugin extends PluginBase
     public function registerComponents()
     {
       return [
-            'Samubra\Train\Components\RecordForm' => 'recordForm'
+            'Samubra\Train\Components\ApplyForm' => 'applyform'
         ];
     }
 

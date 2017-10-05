@@ -103,23 +103,43 @@ class SeedLookupTable extends Seeder
         'type'  => 'teacher_type',
     ],
     [
-        'name'  => '助理讲师',
-        'code'  => 'teacher_type_zhulijiangshi',
+        'name'  => '电工作业',
+        'code'  => 'teacher_type_diangong',
         'type'  => 'teacher_type',
     ],
     [
-        'name'  => '讲师',
-        'code'  => 'teacher_type_jiangshi',
+        'name'  => '登高架设作业',
+        'code'  => 'teacher_type_denggao',
         'type'  => 'teacher_type',
     ],
     [
-        'name'  => '高级讲师',
-        'code'  => 'teacher_type_gaojijiangshi',
+        'name'  => '焊接与热切割作业',
+        'code'  => 'teacher_type_hanjie',
         'type'  => 'teacher_type',
     ],
     [
-        'name'  => '教授',
-        'code'  => 'teacher_type_jiaoshou',
+        'name'  => '企业内机动车辆',
+        'code'  => 'teacher_type_jidongcheliang',
+        'type'  => 'teacher_type',
+    ],
+    [
+        'name'  => '非煤矿山',
+        'code'  => 'teacher_type_feimeikuangshan',
+        'type'  => 'teacher_type',
+    ],
+    [
+        'name'  => '法律法规及案例分析',
+        'code'  => 'teacher_type_falvfagui',
+        'type'  => 'teacher_type',
+    ],
+    [
+        'name'  => '烟花爆竹',
+        'code'  => 'teacher_type_yanbao',
+        'type'  => 'teacher_type',
+    ],
+    [
+        'name'  => '危险化学品',
+        'code'  => 'teacher_type_weihua',
         'type'  => 'teacher_type',
     ],
   ];

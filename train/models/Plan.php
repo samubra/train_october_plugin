@@ -11,6 +11,7 @@ class Plan extends Model
     use \October\Rain\Database\Traits\Validation;
 
     use \October\Rain\Database\Traits\SoftDelete;
+    use \October\Rain\Database\Traits\Nullable;
 
 
 
@@ -21,6 +22,7 @@ class Plan extends Model
         'can_apply' => 'boolean'
     ];
     protected $jsonable = ['other_info'];
+    protected $nullable = ['other_info'];
     /*
      * Validation
      */

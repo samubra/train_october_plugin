@@ -19,9 +19,8 @@ use Validator;
 use ValidationException;
 use Exception;
 use AjaxException;
-use Samubra\Train\Classes\IndentityRule;
 
-class RecordForm extends ComponentBase
+class ApplyForm extends ComponentBase
 {
     public $submitPage = null;
     public $plan_id = null;
@@ -86,21 +85,13 @@ class RecordForm extends ComponentBase
         try{
             $postData = post();
             $rules = [
-                'identity' => ['required',new IndentityRule]
+                'identity' => ['required','identity']
             ];
             $messages = [
                 'identity'=> '身份证号码格式不正确。',
-                'identity.required' => '身份证号码必须填写。'
+                'required' => '身份证号码必须填写。'
             ];
 
-            if(array_key_exists('name', $postData))
-            {
-                $rules['name'] = 'required|min:2|max:12';
-                $messages['name.required'] = '请填写姓名。';
-                $messages['min'] = '姓名至少2个字';
-                $messages['max'] = '姓名最多12个字';
-            }
-            trace_sql();
 
             $validation = $this->validation($postData,$rules,$messages);
 
@@ -137,47 +128,39 @@ class RecordForm extends ComponentBase
     {
         try {
             $apply = post();
-            $planModel = $this->loadPlan($apply['plan_id']);
-            $recordModel = Record::find($apply['record_id']);
             $rules = [
-                'name' => 'required|min:2|max:12',
-                'identity' => 'required|identity',
-                'edu_id' => 'required|exists:samubra_train_lookup,id',
-                'phone' => 'required|telephone',
+                'phone' => 'required',
                 'address' => 'required',
                 'company' => 'required'
             ];
 
             $messages = [
                 'required' => '必填项',
-                'identity'=> '身份证号码格式不正确。',
-                'identity.required' => '身份证号码必须填写。',
-                'name.required' => '请填写姓名。',
-                'min' => '姓名至少2个字',
-                'max' => '姓名最多12个字',
-                'exists' => '必须选择一个存在的值。',
-                'telephone' => '手机号码格式不正确。'
             ];
-            unset($apply['plan_id']);
-            unset($apply['record_id']);
+            //var_dump($apply);
+
             $validation = $this->validation($apply,$rules,$messages);
             if( $validation)
             {
                 //var_dump($recordModel->id);
-                $planModel->records()->attach($recordModel->id,$apply);
-                var_dump($planModel);
+                if(!isset($apply['record_id']))
+                  $apply['record_id'] =null;
+                //$apply['plan_id'] = post('plan_id');
+                //var_dump($apply['plan_id']);
+                $applyModel = ApplyModel::create($apply);
+                //$planModel->records()->attach($recordModel->id,$apply);
+                //var_dump($applyModel);
                 trace_sql();
                 return Redirect::to('/plan/list');
             }
             //else
-                throw new ApplicationException('你填写的部分内容不符合要求，请仔细阅读培训计划相关内容并按照实际要求填写！');
+                //throw new ApplicationException('你填写的部分内容不符合要求，请仔细阅读培训计划相关内容并按照实际要求填写！');
 
         }catch (Exception $ex) {
             if (Request::ajax()) throw new ApplicationException($ex->getMessage());
             else Flash::error($ex->getMessage());
             }
     }
-
     protected function loadPlan( $plan_id = null )
     {
         if (!strlen($this->plan_id)) {
@@ -186,9 +169,8 @@ class RecordForm extends ComponentBase
             else
                 return ;
         }
-        return Plan::with('train_type','plan_status','records')->find($this->plan_id);
+        return Plan::with('train_type','plan_status')->find($this->plan_id);
     }
-
     protected function loadEduOptions()
     {
         $this->page['eduOptions'] = Lookup::eduType()->lists('name','id');
@@ -215,8 +197,8 @@ class RecordForm extends ComponentBase
             //throw new ApplicationException($identity);
             //var_dump($plan->records_count);
             $query = Record::where('identity', $data['identity'])->where('type_id', $data['type_id']);
-            if($plan->records_count)
-                $query->whereNotIn('id', $plan->records->lists('id'));
+            if($plan->applies_count)
+                $query->whereNotIn('id', $plan->applies->lists('record_id'));
             $record = $query->with('record_type')->get();
             trace_sql();
             if ($record->count()) {// && $record->checkCanApply($plan->is_review)

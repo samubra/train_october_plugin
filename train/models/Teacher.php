@@ -8,7 +8,7 @@ use Model;
 class Teacher extends Model
 {
     use \October\Rain\Database\Traits\Validation;
-    
+
     /*
      * Validation
      */
@@ -19,7 +19,6 @@ class Teacher extends Model
      * @var string The database table used by the model.
      */
     public $table = 'samubra_train_teacher';
-    protected $appends = ['type_name'];
 
     public $belongsTo = [
         'teacher_type' => [Lookup::class, 'key' => 'type_id','scope'=>'teacherType'],
@@ -29,8 +28,5 @@ class Teacher extends Model
         'courses' => [Course::class,'key' => 'teacher_id']
     ];
 
-    public function getTypeNameAttribute()
-    {
-        return $this->teacher_type->name;
-    }
+
 }
