@@ -72,7 +72,8 @@ class Plan extends Model
       //  ],
     ];
     public $hasMany = [
-        'applies' => [Apply::class]
+        'applies' => [Apply::class],
+        'applies_count' => [Apply::class, 'count' => true]
     ];
     public $attachMany = [
         'photos' => 'System\Models\File'

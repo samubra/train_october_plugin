@@ -151,7 +151,7 @@ class ApplyForm extends ComponentBase
                 //$planModel->records()->attach($recordModel->id,$apply);
                 //var_dump($applyModel);
                 trace_sql();
-                return Redirect::to('/plan/list');
+                return Redirect::to('/plan-list');
             }
             //else
                 //throw new ApplicationException('你填写的部分内容不符合要求，请仔细阅读培训计划相关内容并按照实际要求填写！');
