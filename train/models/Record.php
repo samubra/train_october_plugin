@@ -23,10 +23,10 @@ class Record extends Model
     protected $casts = [
       //'remark' => 'array',
       'is_reviewed' => 'boolean',
-      'is_valid' => 'remark',
+      'is_valid' => 'boolean',
     ];
 
-    protected $jsonable = ['other_info'];
+    protected $jsonable = ['remark'];
 
     /*
      * Validation

@@ -10,12 +10,12 @@
     {% if record %}<input name="record_id" type="hidden" value="{{ record.id }}"{% endif %}
     <div class="row">
         <div class="input-field col s12">
-            <input id="identity" type="text" class="validate" name="identity" value="{{ record ? record.identity : ''}}" {{ record ? "disabled" : 'placeholder="输入身份证号码"'}}>
+            <input id="identity" type="text" class="validate" name="identity" value="{{ record ? record.identity : ''}}" {{ record ? "readonly" : 'placeholder="输入身份证号码"'}}>
             <label for="identity" class="col-lg-2 control-label">身份证号码</label>
             <span data-validate-for="identity"></span>
         </div>
         <div class="input-field col s12">
-            <input type="text" class="validate" id="name" name="name" value="{{ record ? record.name : ''}}" {{ record ? "disabled" : 'placeholder="输入姓名"'}}>
+            <input type="text" class="validate" id="name" name="name" value="{{ record ? record.name : ''}}" {{ record ? "readonly" : 'placeholder="输入姓名"'}}>
             <label for="name" class="col-lg-2 control-label">姓名</label>
             <span data-validate-for="name"></span>
         </div>

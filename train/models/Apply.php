@@ -162,7 +162,7 @@ class Apply extends Model
             }
             break;
           case '2':
-            if(!$this->checkReviewData($reprintDate,$planStartDate) || !$recordModel->is_revewed)
+            if(!$this->checkReviewData($reprintDate,$planStartDate) || !$recordModel->is_reviewed)
             {
               throw new ApplicationException('所选操作证不应该在当前时间换证,或者当前操作证已失效！');
               return false;

@@ -96,14 +96,14 @@ fields:
         label: 'samubra.train::lang.apply.theory_score'
         oc.commentPosition: ''
         span: auto
-        default: '0'
+        default: 0
         required: 1
         type: number
     operate_score:
         label: 'samubra.train::lang.apply.operate_score'
         oc.commentPosition: ''
         span: auto
-        default: '0'
+        default: 0
         type: number
     remark:
         label: 'samubra.train::lang.plugin.remark'
