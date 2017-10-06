@@ -104,7 +104,9 @@ class ApplyForm extends ComponentBase
                     $this->findRecords($postData);
                 $this->page['new_record'] = $this->new_record;
             }else{
-                throw new ApplicationException(sprintf('没有找到 %s 的操作证', $postData['identity']));
+                Flash::error(sprintf('没有找到 %s 的操作证', $postData['identity']));
+                throw new ValidationException($validation);
+                //throw new ApplicationException(sprintf('没有找到 %s 的操作证', $postData['identity']));
             }
 
         }catch (Exception $ex) {
@@ -150,8 +152,10 @@ class ApplyForm extends ComponentBase
                 $applyModel = ApplyModel::create($apply);
                 //$planModel->records()->attach($recordModel->id,$apply);
                 //var_dump($applyModel);
-                trace_sql();
+                //trace_sql();
                 return Redirect::to('/plan-list');
+            }else{
+              throw new ValidationException($validation);
             }
             //else
                 //throw new ApplicationException('你填写的部分内容不符合要求，请仔细阅读培训计划相关内容并按照实际要求填写！');
