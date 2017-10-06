@@ -1,10 +1,8 @@
-<div class="card-panel hoverable">
+
   <form id="applyForm"
         data-request="{{ __SELF__ }}::onSaveApply"
-        data-request-redirect="{{ planList|page }}"
-        data-request-update="'{{ __SELF__ }}::list': '#result','{{ __SELF__ }}::record': '#record'"
-        data-request-success="$('#identity').val('');$('#name').val('');console.log(data)"
->
+        data-request-update="'{{ __SELF__ }}::apply_result': '#apply'"
+        data-request-success="$('#identity').val('');$('#name').val('');console.log(data)">
     <input name="plan_id" type="hidden" value="{{ plan.id }}">
     <input name="type_id" type="hidden" value="{{ plan.type_id }}">
     {% if record %}<input name="record_id" type="hidden" value="{{ record.id }}"{% endif %}
@@ -56,8 +54,7 @@
               </button>
         </div>
       </div>
-</form>
-</div>
+  </form>
 <script>
 $(document).ready(function() {
     $('select').material_select();

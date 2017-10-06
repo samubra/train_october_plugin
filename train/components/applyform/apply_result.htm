@@ -1,0 +1,25 @@
+<div class="card-panel hoverable">
+  <ul class="collection with-header">
+      <li class="collection-header"><h4>你的报名信息</h4><hr/><h6>请仔细确认报名信息，如有误请联系工作人员进行修改；无误则根据报名流程进行下一步报名。</h6></li>
+      <li class="collection-item">姓名: <span class="teal lighten-2 white-text left-align">{{ applyResult.name }}</span></li>
+      <li class="collection-item">身份证号码: <span class="teal lighten-2 white-text left-align">{{ applyResult.identity }}</span></li>
+      <li class="collection-item">文化程度: <span class="teal lighten-2 white-text left-align">{{ applyResult.edu.name }}</span></li>
+      <li class="collection-item">联系电话: <span class="teal lighten-2 white-text left-align">{{ applyResult.phone }}</span></li>
+      <li class="collection-item">联系地址: <span class="teal lighten-2 white-text left-align">{{ applyResult.address }}</span></li>
+      <li class="collection-item">工作单位: <span class="teal lighten-2 white-text left-align">{{ applyResult.company }}</span></li>
+      <li class="collection-item">受理状态: <span class="teal lighten-2 white-text left-align">{{ applyResult.apply_status.name }}</span></li>
+      <li class="collection-item">已交费用: <span class="teal lighten-2 white-text left-align">{{ applyResult.pay }}</span></li>
+    </ul>
+    {% if applyResult.record %}
+    <ul class="collection with-header">
+        <li class="collection-header"><h5>操作证信息</h5></li>
+        <li class="collection-item">初领证日期: <span class="teal lighten-2 white-text left-align">{{ applyResult.record.first_get_date }}</span></li>
+        <li class="collection-item">发证日期: <span class="teal lighten-2 white-text left-align">{{ applyResult.record.print_date }}</span></li>
+        <li class="collection-item">应复审日期: <span class="teal lighten-2 white-text left-align">{{ applyResult.record.review_date }}</span></li>
+        <li class="collection-item">是否已复审: <span class="teal lighten-2 white-text left-align">{{ applyResult.record.is_reviewed ? "已复审":"未复审" }}</span></li>
+        <li class="collection-item">换证日期: <span class="teal lighten-2 white-text left-align">{{ applyResult.record.reprint_date }}</span></li>
+        <li class="collection-item">是否有效: <span class="teal lighten-2 white-text left-align">{{ applyResult.record.is_valid ? "有效":"已失效" }}</span></li>
+    </ul>
+    {% endif %}
+    <a href="{{ 'planList'|page }}" class="waves-effect waves-light btn-large"><i class="material-icons left">arrow_back</i>返回培训计划列表</a>
+</div>

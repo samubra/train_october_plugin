@@ -150,10 +150,11 @@ class ApplyForm extends ComponentBase
                 //$apply['plan_id'] = post('plan_id');
                 //var_dump($apply['plan_id']);
                 $applyModel = ApplyModel::create($apply);
+                $this->page['applyResult'] = $applyModel;
                 //$planModel->records()->attach($recordModel->id,$apply);
                 //var_dump($applyModel);
                 //trace_sql();
-                return Redirect::to('/plan-list');
+                //return Redirect::to('/plan-list');
             }else{
               throw new ValidationException($validation);
             }

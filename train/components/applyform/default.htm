@@ -1,6 +1,8 @@
-{% if(__SELF__.plan.is_review) %}
-    {% partial __SELF__~"::review" plan=__SELF__.plan %}
-{% else %}
-    {% partial __SELF__~"::apply_form" plan=__SELF__.plan %}
-{% endif %}
-<div id="result"></div>
+<div id="apply">
+  {% if(__SELF__.plan.is_review) %}
+      {% partial __SELF__~"::review" plan=__SELF__.plan %}
+  {% else %}
+      {% partial __SELF__~"::apply_form" plan=__SELF__.plan %}
+  {% endif %}
+  <div id="result"></div>
+</div>

@@ -97,7 +97,7 @@ class Apply extends Model
     {
         $this->getPlanModel();
         if(!$this->status_id)
-            $this->status_id = 1;
+            $this->status_id = 4;
         $this->is_review = $this->planModel->is_review;
         //Flash::error('Error saving settings');
         if(is_null($this->id))
