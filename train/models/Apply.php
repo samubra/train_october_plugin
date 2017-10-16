@@ -150,7 +150,7 @@ class Apply extends Model
             throw new ApplicationException('所选操作证的操作项目和该培训计划不一致，请重新选择添加！');
             return false;
         }
-        $planStartDate = $this->getDateCarbon($this->planModel->start_date);
+        $planStartDate = $this->getDateCarbon($this->planModel->end_apply_date);
         $reviewDate = $this->getDateCarbon($recordModel->review_date);
         $reprintDate = $this->getDateCarbon($recordModel->reprint_date);
         switch ($this->planModel->is_review) {
