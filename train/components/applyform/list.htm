@@ -17,7 +17,7 @@
                     <td>{{ record.name }}</td>
                     <td>{{ record.record_type.name }}</td>
                     <td>{{ record.print_date }}</td>
-                    <td>{{ record.is_valid ? '已复审':'未复审' }}</td>
+                    <td>{{ record.is_reviewed ? '已复审':'未复审' }}</td>
                     <td>
 
                         <a data-request="{{ __SELF__ }}::onLoadRecord"
