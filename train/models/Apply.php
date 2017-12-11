@@ -183,7 +183,7 @@ class Apply extends Model
      */
     protected function checkReviewData(Carbon $date, Carbon $planStartDate)
     {
-      return $planStartDate->lessThanOrEqualTo($date) && $planStartDate->greaterThanOrEqualTo($date->subMonths(2));
+      return $planStartDate->greaterThanOrEqualTo($date->subMonths(2)) && $planStartDate->lessThanOrEqualTo($date->addMonths(2)->endOfMonth());
 
     }
     /**
